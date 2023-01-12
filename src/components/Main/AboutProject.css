@@ -1,0 +1,108 @@
+.main__about {
+    height: 608;
+    display: flex;
+    flex-direction: column;
+    margin: 0 70px;
+}
+
+.main__header {
+    
+    height: 160px;
+    width: 1140px;
+    justify-content: center;
+    border-bottom: 1px #000000 solid;
+}
+
+.main__header__subtitle {
+    margin: 110px auto 23px 0;
+    padding: 0;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 27px;
+}
+
+.main__about__headers {
+    margin: 70px 0 26px 0;
+    flex-direction: row; 
+    display: flex;
+}
+ .main__about__info-subtitle {
+    margin: 0;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+    width: 550px;
+ }   
+
+ .main__about__info-subtitle:last-of-type {
+    margin-left: 40px;
+ }
+
+.main__about__info {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    flex-direction: row;
+    display: flex;
+}
+
+.main__about__info-text {
+    width: 550px;
+
+}
+.main__about__info-text:last-of-type{
+    margin-left: 40px;
+}
+
+.main__about__time {
+    margin: 110px 0 14px 0;
+    flex-direction: row;
+    display: flex;
+    text-align: center;
+    }
+
+.main__about__time-1 {
+width: 228px;
+height: 36px;
+color: #FFFFFF;
+background-color: #000000;
+border: none;
+font-size: 14px;
+font-weight: 400;
+line-height: 17px;
+padding-top: 9px;
+margin: 0;
+}
+.main__about__time-2 {
+    padding-top: 9px;
+background-color: #F2F2F2;
+border: none;
+font-size: 14px;
+font-weight: 400;
+line-height: 17px;
+margin: 0;
+width: 912px;
+height: 36px;
+}
+
+.main__about__time-span {
+    flex-direction: row;
+    display: flex;
+    color: #A0A0A0;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 500px;
+    margin: 0 0 110px 14px;
+    text-align: center;
+}
+
+.main__about__time-span-text {
+    width: 200px;
+    margin: 0;
+}
+
+.main__about__time-span-text:last-of-type {
+    margin-left: 370px;
+}

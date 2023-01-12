@@ -1,0 +1,25 @@
+.footer {
+    max-height: 172px;
+    display: flex;
+    flex-direction: column;
+
+  
+}
+
+.footer__title {
+    margin: 79px 70px 20px 70px;
+    max-width: 1140px;
+    padding-bottom: 20px;
+ border-bottom: #E8E8E8 solid 1px;
+ color: #A0A0A0;
+ font-size: 13px;
+ line-height: 16px;
+ text-align: center;
+
+}
+
+.footer__copyright {
+    font-size: 13px;
+    margin-left: 70px;
+}
+

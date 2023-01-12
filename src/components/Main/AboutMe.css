@@ -1,0 +1,71 @@
+.main__student {
+    height: 1079;
+    display: flex;
+    flex-direction: column;
+    margin: 0 70px;
+
+}
+
+.main__student__header {
+    height: 160px;
+    width: 1140px;
+    justify-content: center;
+    border-bottom: 1px #000000 solid;
+}
+
+.main__student__header__subtitle {
+    margin: 110px auto 23px 0;
+    padding: 0;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 27px;
+}
+
+.main__student__info {
+    flex-direction: column;
+    margin: 0; 
+    position: relative;
+
+}
+
+.main__student__info-name {
+    font-weight: 400;
+font-size: 50px;
+line-height: 58px;
+letter-spacing: -0.04em;
+margin: 66px auto 18px 0;
+}
+
+.main__student__info-about {
+    margin: 0;
+    font-weight: 500;
+font-size: 18px;
+line-height: 20px;
+}
+
+.main__student__info-description {
+    font-weight: 400;
+font-size: 14px;
+line-height: 22px;
+margin: 26px auto 99px 0;
+width: 600px; 
+height: 88px;  
+
+}
+
+.main__student__photo {
+    max-width: 270px;
+    height: 327px;
+    border-radius: 10px;
+    margin-top: 227px;
+    right: 70px;
+    position: absolute;
+}
+
+.main__student__info-link {
+    margin: 0;
+    font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+}

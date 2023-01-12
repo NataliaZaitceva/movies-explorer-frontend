@@ -1,0 +1,46 @@
+.navigation {
+    display: flex;
+}
+
+.navigation__list {
+    list-style: none;
+    height: 18px;
+    width: 231px;
+    margin: 28px 48px 18px 728px;
+    padding: 0;
+    display: flex;
+    font-size: 14px;
+    font-weight: 18px;
+    white-space: nowrap;
+}
+
+.navigation__link__movies{
+    margin-right: 20px;
+
+    
+}
+
+.navigation__profile {
+    height: 30px;
+    display: flex;
+    margin-top: 21px;
+}
+
+.navigation__profile__text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    margin: 7px 13px 50px 0;
+
+}
+
+.navigation__profile__img {
+    background-image: url('../../images/icon_profile.svg');
+    background-color: #F5F5F5;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 18px;
+}
