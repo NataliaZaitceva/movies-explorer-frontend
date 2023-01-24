@@ -1,15 +1,14 @@
 .filter {
   margin: 0;
   padding: 0;
-  display: flex; 
+  display: flex;
   justify-content: center;
-  text-align: center; 
+  text-align: center;
   max-width: 1280px;
 }
 
 .filter__checkbox {
   display: flex;
- 
 }
 .filter__input {
   position: relative;
@@ -55,15 +54,15 @@ input:checked + .filter__input_slider {
   background-color: #2be080;
 }
 
-input:checked +.filter__input_slider:before {
-    transform: translateX(20px);
+input:checked + .filter__input_slider:before {
+  transform: translateX(20px);
 }
 
 .filter__text {
-    margin: 0 auto auto 12px;
-    padding: auto;
-    font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 18px;
+  margin: 0 auto auto 12px;
+  padding: auto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
 }

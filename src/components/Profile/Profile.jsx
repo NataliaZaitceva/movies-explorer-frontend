@@ -1,26 +1,25 @@
 import React from "react";
-import "./Profile.css"
+import "./Profile.css";
 
 function Profile() {
-    return (
-<section className="profile">
-    <h2 className="profile__title">Привет, Виталий!</h2>
-    <form className="profile__form">
+  return (
+    <section className="profile">
+      <h2 className="profile__title">Привет, Виталий!</h2>
+      <form className="profile__form">
         <div className="profile__form__input">
-        <h3 className="profile__form__name">Имя</h3>
-        <p className="profile__form__value">Виталий</p>
+          <h3 className="profile__form__name">Имя</h3>
+          <p className="profile__form__value">Виталий</p>
         </div>
         <div className="profile__form__input">
-        <h3 className="profile__form__name">E-mail</h3>
-        <p className="profile__form__value">pochta@yandex.ru</p>
-    </div>
-    
-    <p className="profile__edit">Редактировать</p>
-    <p className="profile__edit">Выйти из аккаунта</p>
-    </form>
-    
-</section>
-    )
+          <h3 className="profile__form__name">E-mail</h3>
+          <p className="profile__form__value">pochta@yandex.ru</p>
+        </div>
+
+        <p className="profile__edit">Редактировать</p>
+        <p className="profile__edit">Выйти из аккаунта</p>
+      </form>
+    </section>
+  );
 }
 
 export default Profile;

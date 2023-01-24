@@ -1,23 +1,21 @@
 .page {
   max-width: 1280px;
   min-width: 320px;
-  font-family: 'Inter', 'Arial', sans-serif;
+  font-family: "Inter", "Arial", sans-serif;
   margin: 0 70px;
   padding: 0;
   position: relative;
-  background-color: #FDFDFD;
+  background-color: #fdfdfd;
 }
 
-@media  screen and (max-width: 1000px) {
+@media screen and (max-width: 1000px) {
   .page {
-    margin:  0px 30px;
+    margin: 0px 30px;
   }
-  
 }
 
-@media  screen and (max-width: 398px) {
+@media screen and (max-width: 398px) {
   .page {
-    margin:  0;
+    margin: 0;
   }
-  
 }

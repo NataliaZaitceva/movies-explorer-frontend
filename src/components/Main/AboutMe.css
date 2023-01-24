@@ -1,144 +1,129 @@
 .main__student {
-    height: 1079;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto 50px auto;
-    
-
+  height: 1079;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 50px auto;
 }
 
 .main__student__header {
-    height: 160px;
-    max-width: 1140px;
-    justify-content: center;
-    border-bottom: 1px #000000 solid;
+  height: 160px;
+  max-width: 1140px;
+  justify-content: center;
+  border-bottom: 1px #000000 solid;
 }
 
 .main__student__header__subtitle {
-    margin: 125px auto 23px 0;
-    padding: 0;
-    font-size: 22px;
-    font-weight: 400;
-    line-height: 27px;
+  margin: 125px auto 23px 0;
+  padding: 0;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 27px;
 }
 
 .main__student__info {
-    flex-direction: column;
-    margin: 0; 
-    position: relative;
-
+  flex-direction: column;
+  margin: 0;
+  position: relative;
 }
 
 .main__student__info-name {
-    font-weight: 400;
-font-size: 50px;
-line-height: 58px;
-letter-spacing: -0.04em;
-margin: 66px auto 18px 0;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  letter-spacing: -0.04em;
+  margin: 66px auto 18px 0;
 }
 
 .main__student__info-about {
-    margin: 0;
-    font-weight: 500;
-font-size: 18px;
-line-height: 20px;
+  margin: 0;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
 }
 
 .main__student__info-description {
-    font-weight: 400;
-font-size: 14px;
-line-height: 22px;
-margin: 26px auto 99px 0;
-max-width: 600px; 
-  
-
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  margin: 26px auto 99px 0;
+  max-width: 600px;
 }
 
 .main__student__photo {
-    max-width: 270px;
-    height: 327px;
-    border-radius: 10px;
-    margin-top: 227px;
-    right: 70px;
-    position: absolute;
+  max-width: 270px;
+  height: 327px;
+  border-radius: 10px;
+  margin-top: 227px;
+  right: 70px;
+  position: absolute;
 }
 
 .main__student__info-link {
-    margin: 0;
-    font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 17px;
+  margin: 0;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
 }
 
 @media screen and (max-width: 1116px) {
-    .main__student__photo {
-        right: 0;
-    }
+  .main__student__photo {
+    right: 0;
+  }
 
-    .main__student__info-description {
-
-    max-width: 500px; 
-      
-    
-    }
+  .main__student__info-description {
+    max-width: 500px;
+  }
 }
 
 @media screen and (max-width: 836px) {
-    .main__student__photo {
-        right: 0;
-    }
+  .main__student__photo {
+    right: 0;
+  }
 
-    .main__student__info-description {
-
-    max-width: 364px; 
-      
-    
-    }
+  .main__student__info-description {
+    max-width: 364px;
+  }
 }
 
 @media screen and (max-width: 500px) {
-    .main__student {
-        margin-bottom: 0;
-    }
-    .main__student__info {
-        flex-direction: column;
-    }
+  .main__student {
+    margin-bottom: 0;
+  }
+  .main__student__info {
+    flex-direction: column;
+  }
 
-    .main__student__photo {
-       position: relative;
-        width: 292px;
-        margin: 60px auto 40px auto;
-        align-items: center;
-        align-self: center;
-    }
+  .main__student__photo {
+    position: relative;
+    width: 292px;
+    margin: 60px auto 40px auto;
+    align-items: center;
+    align-self: center;
+  }
 
-    .main__student__info-name {
-        font-style: normal;
-font-weight: 400;
-font-size: 30px;
-line-height: 36px;
-letter-spacing: -0.04em;
-margin-top: 0;
-    }
+  .main__student__info-name {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 36px;
+    letter-spacing: -0.04em;
+    margin-top: 0;
+  }
 
-    .main__student__info-about {
-        font-style: normal;
-font-weight: 500;
-font-size: 11px;
-line-height: 16px;
-margin: 0 auto 20px 0;
-    }
+  .main__student__info-about {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 16px;
+    margin: 0 auto 20px 0;
+  }
 
-    .main__student__info-description {
-      
-        font-style: normal;
-        font-weight: 500;
-        font-size: 11px;
-        line-height: 16px;
-        margin: 0 auto 40px 0;
-    }
-
-
-
+  .main__student__info-description {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 16px;
+    margin: 0 auto 40px 0;
+  }
 }

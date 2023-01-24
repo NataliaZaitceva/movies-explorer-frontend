@@ -4,11 +4,13 @@ import SearchForm from "../Movies/SearchForm";
 import Footer from "../Footer/Footer";
 
 function SavedMovies() {
-    return (
-        <><SearchForm />
-        <MoviesCardList />
-        <Footer /></>
-    )
+  return (
+    <>
+      <SearchForm />
+      <MoviesCardList />
+      <Footer />
+    </>
+  );
 }
 
 export default SavedMovies;
