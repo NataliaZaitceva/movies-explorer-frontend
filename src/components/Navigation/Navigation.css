@@ -1,46 +1,210 @@
-.navigation {
-    display: flex;
-}
-
 .navigation__list {
-    list-style: none;
-    height: 18px;
-    width: 231px;
-    margin: 28px 48px 18px 728px;
-    padding: 0;
-    display: flex;
-    font-size: 14px;
-    font-weight: 18px;
-    white-space: nowrap;
+    max-width: 381px; 
+  list-style: none;
+  height: 18px;
+  margin: 28px 0 18px auto;
+  padding: 0;
+  display: flex;
+  font-size: 14px;
+  font-weight: 18px;
+  white-space: nowrap;
+  text-decoration: none;
+  position: relative;
+  color: #000000;
 }
 
-.navigation__link__movies{
+.navigation__toggle {
+    display: none;
+}
+
+
+.navigation__link__main {
+    display: flex;
+  }
+  
+  .navigation__link__movies {
     margin-right: 20px;
-
-    
-}
-
-.navigation__profile {
-    height: 30px;
+    text-decoration: none;
+  }
+  
+  .navigation__link__movies-saved {
+    text-decoration: none;
+  }
+  
+  .navigation__profile {
+    margin: 0 0 0 50px;
+    cursor: pointer;
     display: flex;
-    margin-top: 21px;
-}
-
-.navigation__profile__text {
-    font-size: 14px;
+  
+    align-items: center;
+  }
+  
+  .navigation__profile__text {
     font-weight: 500;
     line-height: 16px;
-    margin: 7px 13px 50px 0;
-
-}
-
-.navigation__profile__img {
-    background-image: url('../../images/icon_profile.svg');
-    background-color: #F5F5F5;
+    margin: 0 13px 0 0;
+    text-decoration: none;
+  }
+  
+  .navigation__profile__img {
+    background-image: url("../../images/icon_profile.svg");
+    background-color: #f5f5f5;
     width: 30px;
     height: 30px;
     border-radius: 6px;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 18px;
+    background-size: 10px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navigation__link__main {
+    display: none;
+  }
+
+@media screen and (max-width: 1000px) {
+  .navigation {
+    
+   position: relative;
+  }
+
+  .navigation__active {
+    display: flex;
+    border: none;
+    z-index: 2;
+   height: 100vh;
+      max-width: 520px;
+    margin: 0;
+    background-color: #ffffff;
+    position: absolute;
+    top: 0;
+    right: -30px;
+ padding: 0;
+  }
+
+
+  .navigation__list {
+   display: none;
+    
+  }
+
+  .navigation__list__burger {
+color: #000000;
+    list-style: none;
+    font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 22px;
+    white-space: nowrap;
+    text-decoration: none;
+    z-index: 3;
+    flex-direction: column;
+    display: flex;
+    margin:  0 90px;
+    text-align: center;
+   max-width: 340px;    ;
+
+  }
+
+  .navigation__link__main {
+    display: block;
+    margin: 159px 0 28px 0;
+    text-decoration: none;
+  }
+
+  .navigation__link__movies {
+    margin: 0 0 28px 0;
+  }
+
+  .navigation__link__movies-saved {
+    margin: 0 0;
+  }
+  .navigation__toggle {
+    display: block;
+    margin: 15px 0 15px auto;
+    height: 44px;
+    width: 44px;
+    padding: 15px 0;
+    font-size: 0;
+    color: transparent;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    border: none;
+    position: relative;
+    background-image: url('../../images/burger.jpg');
+  }
+  .navigation__toggle__active {
+    display: block;
+    margin: 15px auto 15px auto;
+    height: 44px;
+    width: 44px;
+    padding: 15px 0;
+    color: transparent;
+    border: 0;
+    cursor: pointer;
+    border: none;
+    position: relative;
+    background-image: url('../../images/close.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .navigation__profile {
+    display: flex;
+    margin: 300px 90px 0 90px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  .navigation__active {
+    display: flex;
+    border: none;
+    z-index: 2;
+   height: 100vh;
+    width: 320px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+
+  }
+  .navigation__list__burger {
+    color: #000000;
+        list-style: none;
+        font-style: normal;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        margin: 0 auto;
+      
+       width: 300px;
+    
+      }
+
+
+  .navigation__toggle{
+    width: 40px;
+    height: 43px;
+    margin: 15px 0 auto auto;
+  }
+
+  .navigation__toggle__active {
+    display: block;
+    margin: 0;
+    width: 44px;
+    color: transparent;
+    border: 0;
+    cursor: pointer;
+    border: none;
+    background-image: url('../../images/close.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 }

@@ -2,14 +2,14 @@
     height: 625px;
     display: flex;
     flex-direction: column;
-    margin: 0;
-    padding: 0 70px;
+    margin: 0 auto;
+    padding: 0 auto;
     background-color: #F5F5F5;
 }
 
 .main__techs__header {
     height: 160px;
-    width: 1140px;
+    max-width: 1140px;
     justify-content: center;
     border-bottom: 1px #000000 solid;
 }
@@ -31,7 +31,7 @@
 
 .main__techs__text {
     margin: 0 auto 100px auto;
-    width: 460px;
+    max-width: 460px;
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
@@ -48,7 +48,7 @@
 }
  
 .main__techs__item {
-    width: 90px;
+   width: 90px;
     height: 39px;
     background-color: #E8E8E8;
     border-radius: 10px;
@@ -65,4 +65,63 @@
 
 .main__techs__item:last-of-type{
     margin-right: 0;
+}
+
+@media screen and (max-width: 855px){
+   
+    .main__techs__list {
+      margin: 0 auto;
+      padding: 0;
+      text-align: center;
+    
+    }
+
+    .main__techs__item {
+        width: 84px;
+    
+     }
+   
+}
+
+@media screen and (max-width: 500px){
+   
+    .main__techs__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 10px;
+  list-style: none;
+
+    }
+
+    .main__techs {
+        background-color: #FFFFFF;
+    }
+
+    .main__techs__item {
+        width: 84px;
+    
+     }
+   .main__techs__title {
+    font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 36px;
+text-align: center;
+letter-spacing: -0.04em;
+margin: 60pz auto 0 auto;
+   }
+   .main__techs__text {
+    font-style: normal;
+font-weight: 400;
+font-size: 11px;
+line-height: 16px;
+text-align: center;
+letter-spacing: -0.04em;
+width: 292px;
+margin: 24px auto 50px auto;
+
+   }
+
+
 }

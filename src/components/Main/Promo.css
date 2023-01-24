@@ -5,11 +5,12 @@
     background-color: #F3C1F8;
     height: 574px;
     position: relative;
+    width: 100%;
 }
 
 .promo__landing {
     flex-direction: column;
-    margin-top: 75px;
+    margin: 75px;
     margin-left: 70px;
 }
 
@@ -17,9 +18,10 @@
     font-size: 50px;
     line-height: 58px;
     font-weight: 400;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;   
     max-width: 640px;
+    display: flex;
 }
 
 .promo__text {
@@ -32,8 +34,7 @@
 }
 
 .promo__logo {
-    width: 310px;
-    height: 304px;
+    max-width: 310px;
     position: absolute;
     top: 75px;
     right: 70px;
@@ -43,9 +44,98 @@
     width: 129px;
     height: 36px;
     border: #000000 solid 1px;
-    margin: 146px auto 75px 0;
+    margin: 135px auto 75px 0;
     background-color: transparent;
     cursor: pointer;
+  justify-content: center;
+    align-items: center;
+
+  
+}
+
+.promo-button-text {
+    text-align: center;  
     font-size: 12px;
     line-height: 16px;
+    
+}
+@media screen and (max-width: 1197px){
+    .promo {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        background-color: #F3C1F8;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        vertical-align: middle;
+        position: relative;
+        height: 850px;
+        
+    }
+
+    .promo__logo {
+  
+        position: static;
+        margin: 214px auto 0 auto;
+    }
+    
+    .promo__title {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 50px;
+        text-align: center;
+    }
+
+    .promo__text {
+        margin: 22px auto 62px auto;
+        opacity: 0,5;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 16px;
+     text-align: center;
+    }
+    
+    .promo__button {
+margin: 0 auto 76px auto;
+text-align: center;
+display: flex;
+
+    }
+
+    .promo__landing {
+   margin: 48px auto;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .promo__landing{
+        margin-bottom: 0;
+    }
+.promo__title {
+    font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 38px;
+text-align: center;
+letter-spacing: -0.04em;
+}
+
+.promo__text {
+    margin: 24px auto 80px auto;
+}
+
+.promo__logo {
+    width: 210px;
+    margin: 0 auto 40px auto;
+}
+    .promo__button {
+        margin-bottom: 30px;
+       
+    }
+    .promo {
+        height: 663px;
+    }
 }

@@ -3,11 +3,13 @@
   padding: 0;
   display: flex; 
   justify-content: center;
+  text-align: center; 
+  max-width: 1280px;
 }
 
 .filter__checkbox {
   display: flex;
-  
+ 
 }
 .filter__input {
   position: relative;
@@ -60,5 +62,8 @@ input:checked +.filter__input_slider:before {
 .filter__text {
     margin: 0 auto auto 12px;
     padding: auto;
-    font-size: 18px;
+    font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 18px;
 }

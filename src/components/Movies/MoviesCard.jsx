@@ -1,20 +1,27 @@
 import React from "react";
-import pic from "../../images/pic.jpg"
 import "./MoviesCard.css"
+import { CurrentUserContext } from "../../context/CurrentUserContext";
 
-function MoviesCard(props) {
+
+function MoviesCard({ card }) {
+  
+  
+const cardSaveButton = `${
+    card.saved ? 'card__save_button_active' : 'card__save_button'
+}`;
 
     return(
-        <div className="movies__item">
-            <div className="movies__item__header">
-            <p className="movies__item__header-title">В погоне за Бэнкси</p>
-            <p className="movies__item__header-time">27 минут</p>
+     <li className="card">
+            <div className="card__header">
+                <h3 className="card__header-title">{card.title}</h3>
+                <span className="card__header-time">{card.duration}</span>
             </div>
-            <img className="movie__item__image" src={pic} alt="изображение" />
-            <button className='movie__item__button'
-            type="button"
-            >Сохранить</button> 
-        </div>
+            <img className="card__image" src={card.image} alt={card.title} />
+            <button className={cardSaveButton}
+                type="button"
+            />
+        </li>
+
     )
 }
 

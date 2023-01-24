@@ -2,13 +2,13 @@
     height: 608;
     display: flex;
     flex-direction: column;
-    margin: 0 70px;
+
 }
 
 .main__header {
     
     height: 160px;
-    width: 1140px;
+    max-width: 1140px;
     justify-content: center;
     border-bottom: 1px #000000 solid;
 }
@@ -22,7 +22,7 @@
 }
 
 .main__about__headers {
-    margin: 70px 0 26px 0;
+    margin: 70px 0 15px 0;
     flex-direction: row; 
     display: flex;
 }
@@ -57,15 +57,17 @@
 }
 
 .main__about__time {
-    margin: 110px 0 14px 0;
+    margin: 90px auto 0 auto;
     flex-direction: row;
     display: flex;
     text-align: center;
+    align-self: center;
+    width: 100%;
     }
 
 .main__about__time-1 {
 width: 228px;
-height: 36px;
+height: 28px;
 color: #FFFFFF;
 background-color: #000000;
 border: none;
@@ -74,7 +76,11 @@ font-weight: 400;
 line-height: 17px;
 padding-top: 9px;
 margin: 0;
+flex-direction: column;
+display: flex;
+
 }
+
 .main__about__time-2 {
     padding-top: 9px;
 background-color: #F2F2F2;
@@ -82,27 +88,54 @@ border: none;
 font-size: 14px;
 font-weight: 400;
 line-height: 17px;
-margin: 0;
+margin: 0 0 100px 0;
 width: 912px;
-height: 36px;
+flex-direction: column;
+display: flex;
+height: 28px;
+
 }
 
 .main__about__time-span {
-    flex-direction: row;
-    display: flex;
+    
+    background-color: #FFFFFF;
     color: #A0A0A0;
     font-size: 14px;
     line-height: 17px;
     font-weight: 500px;
-    margin: 0 0 110px 14px;
-    text-align: center;
+    margin: 14px auto 0 auto;
+    width: 100%;
 }
 
-.main__about__time-span-text {
-    width: 200px;
-    margin: 0;
+@media screen and (max-width: 500px) {
+    
+    .main__about {
+      flex-direction: column;  
+    }
+
+    .main__about__headers {
+        flex-direction: column;
+    }
+    
+    .main__about__info-subtitle {
+    font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 22px;
+letter-spacing: -0.04em;
+max-width: 400px;
+}
+    
+.main__about__info-subtitle:last-of-type {
+    margin-left: 0;
 }
 
-.main__about__time-span-text:last-of-type {
-    margin-left: 370px;
+.main__about__info-text {
+    max-width: 400px;
+}
+.main__about__info-text:last-of-type {
+    margin-left: 0;
+}
+
+
 }
