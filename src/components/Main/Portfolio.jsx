@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import link from "../../images/link.png";
+import link from "../../images/link.svg";
 import "./Portfolio.css";
 
 function Portfolio() {
   return (
-    <div className="main__portfolio">
-      <h5 className="main__portfolio-title">Портфолио</h5>
-      <ul className="main__portfolio-list">
-        <li className="main__portfolio-link">
+    <div className="main-portfolio">
+      <h5 className="main-portfolio-title">Портфолио</h5>
+      <ul className="main-portfolio-list">
+        <li className="main-portfolio-link">
           {" "}
           <Link
             className="main__link"
@@ -16,9 +16,9 @@ function Portfolio() {
           >
             Статичный сайт
           </Link>{" "}
-          <img src={link} alt="перейти" className="main__portfolio-icon" />
+          <img src={link} alt="перейти" className="main-portfolio-icon" />
         </li>
-        <li className="main__portfolio-link">
+        <li className="main-portfolio-link">
           {" "}
           <Link
             className="main__link"
@@ -26,16 +26,16 @@ function Portfolio() {
           >
             Адаптивный сайт
           </Link>{" "}
-          <img src={link} alt="перейти" className="main__portfolio-icon" />
+          <img src={link} alt="перейти" className="main-portfolio-icon" />
         </li>
-        <li className="main__portfolio-link">
+        <li className="main-portfolio-link">
           <Link
             className="main__link"
             to="https://github.com/NataliaZaitceva/react-mesto-api-full"
           >
             Одностраничное приложение
           </Link>
-          <img src={link} alt="перейти" className="main__portfolio-icon" />
+          <img src={link} alt="перейти" className="main-portfolio-icon" />
         </li>
       </ul>
     </div>

@@ -1,10 +1,12 @@
-.more__button {
+.more-button {
   margin: 0 0 0 auto;
   display: flex;
   justify-content: center;
+  text-align: center;
+  padding: 0;
 }
 
-.more__button-button {
+.more-button-button {
   width: 360px;
   height: 36px;
   background-color: #f9f9f9;
@@ -14,15 +16,23 @@
   line-height: 15px;
   cursor: pointer;
   margin: 50px auto 80px auto;
+  padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .more-button {
+    margin: 30px auto 0 auto;
+  }
 }
 
 @media screen and (max-width: 406px) {
-  .more__button {
+  .more-button {
     margin: 30px auto 0 auto;
     display: flex;
     justify-content: center;
+    text-align: center;
   }
-  .more__button-button {
+  .more-button-button {
     width: 240px;
   }
 }

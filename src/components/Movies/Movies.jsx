@@ -10,7 +10,6 @@ function Movies() {
     <section className="movies">
       <SearchForm />
       <MoviesCardList />
-      <Footer />
     </section>
   );
 }

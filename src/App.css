@@ -2,20 +2,19 @@
   max-width: 1280px;
   min-width: 320px;
   font-family: "Inter", "Arial", sans-serif;
-  margin: 0 70px;
+  margin: 0 auto;
   padding: 0;
   position: relative;
   background-color: #fdfdfd;
+  justify-content: center;
 }
 
-@media screen and (max-width: 1000px) {
-  .page {
-    margin: 0px 30px;
-  }
-}
 
-@media screen and (max-width: 398px) {
+
+@media screen and (max-width: 320px) {
   .page {
     margin: 0;
+    padding: 0;
+    width: 100%;
   }
 }

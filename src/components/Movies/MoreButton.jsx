@@ -3,8 +3,8 @@ import "./MoreButton.css";
 
 function MoreButton() {
   return (
-    <section className="more__button">
-      <button className="more__button-button">Ещё</button>
+    <section className="more-button">
+      <button className="more-button-button">Ещё</button>
     </section>
   );
 }

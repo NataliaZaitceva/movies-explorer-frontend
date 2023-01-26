@@ -5,21 +5,19 @@
   margin: 0 auto;
   max-width: 396px;
   flex-direction: column;
-  position: relative;
 }
 
 .login__header {
-  height: 217px;
+  text-align: start;
+  justify-content: flex-start;
 }
 
 .login__header-logo {
-  position: absolute;
-  left: 0;
-  top: 40px;
+  margin: 70px auto 0 0;
 }
 
 .login__header-title {
-  margin: 148px 0 16px 0;
+  margin: 40px 0 17px 0;
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
@@ -29,6 +27,7 @@
 .login__form {
   display: flex;
   flex-direction: column;
+  margin-top: 0;
 }
 
 .login__form-name {
@@ -68,14 +67,15 @@
   border: none;
   border-radius: 2px;
   color: #ffffff;
-  margin-top: 69px;
+  margin-top: 135px;
+  margin-bottom: 5px;
   width: 100%;
-  height: 50px;
+  height: 45px;
   font-family: "Inter", "Arial", sans-serif;
   font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
 }
 
 .login__button:hover {
@@ -97,5 +97,59 @@
   font-family: "Inter", "Arial", sans-serif;
   font-size: 14px;
   line-height: 17px;
-  font-style: 400;
+}
+@media screen and (max-width: 500px) {
+  .login {
+    padding: 0 30px;
+  }
+  .login__header {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .login__header-logo {
+    margin: 59px auto 0 auto;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    text-align: center;
+  }
+
+  .login__header-title {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    margin: 50px auto 80px auto;
+  }
+
+  .login__form {
+    max-width: 100%;
+    margin-top: 17px;
+    margin-bottom: 0;
+  }
+
+  .login__button {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    max-width: 260px;
+    margin: 157px auto 0 auto;
+  }
+
+  .login__text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .login__link {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+  }
 }

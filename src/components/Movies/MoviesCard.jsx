@@ -1,10 +1,9 @@
 import React from "react";
 import "./MoviesCard.css";
-import { CurrentUserContext } from "../../context/CurrentUserContext";
 
 function MoviesCard({ card }) {
   const cardSaveButton = `${
-    card.saved ? "card__save_button_active" : "card__save_button"
+    card.saved ? "card__button-active" : "card__button"
   }`;
 
   return (

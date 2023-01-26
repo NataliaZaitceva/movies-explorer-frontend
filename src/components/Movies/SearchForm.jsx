@@ -12,6 +12,7 @@ function SearchForm() {
           id="site-search"
           type="text"
           name="name"
+          required
         ></input>
 
         <button className="search-form__find" type="submit" placeholder="" />

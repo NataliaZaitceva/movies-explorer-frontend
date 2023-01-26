@@ -17,6 +17,7 @@ import Movies from "./components/Movies/Movies";
 import Register from "./components/Register/Register";
 import Profile from "./components/Profile/Profile";
 import Login from "./components/Login/Login";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -30,8 +31,8 @@ function App() {
           <Route path="profile" element={<Profile />} />
           <Route path="signup" element={<Register />} />
           <Route path="signin" element={<Login />} />
-          <Route path="404" element={<NotFound />} />
         </Routes>
+        <Footer />
       </div>
     </BrowserRouter>
   );

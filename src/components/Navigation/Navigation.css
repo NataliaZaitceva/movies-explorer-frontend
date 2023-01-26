@@ -6,7 +6,6 @@
   padding: 0;
   display: flex;
   font-size: 14px;
-  font-weight: 18px;
   white-space: nowrap;
   text-decoration: none;
   position: relative;
@@ -17,35 +16,47 @@
   display: none;
 }
 
-.navigation__link__main {
+.navigation__link-main {
   display: flex;
 }
 
-.navigation__link__movies {
+.navigation__link-movies {
   margin-right: 20px;
   text-decoration: none;
+  color: #000000;
+  font-weight: 400;
 }
 
-.navigation__link__movies-saved {
+.navigation__link-movies:hover {
+  font-weight: 500;
+}
+
+.navigation__link-movies-saved {
   text-decoration: none;
+  color: #000000;
 }
-
+.navigation__link-movies-saved:hover {
+  font-weight: 500;
+}
 .navigation__profile {
   margin: 0 0 0 50px;
   cursor: pointer;
   display: flex;
-
+  flex-direction: row;
+  text-align: center;
   align-items: center;
-}
-
-.navigation__profile__text {
+  width: 100px;
   font-weight: 500;
   line-height: 16px;
-  margin: 0 13px 0 0;
   text-decoration: none;
+  color: #000000;
 }
 
-.navigation__profile__img {
+.navigation__profile:hover {
+  font-weight: 500;
+}
+
+.navigation__profile-img {
   background-image: url("../../images/icon_profile.svg");
   background-color: #f5f5f5;
   width: 30px;
@@ -54,17 +65,22 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 10px;
-  margin: 0;
+  margin-left: 22px;
   padding: 0;
 }
 
-.navigation__link__main {
+.navigation__link-main {
   display: none;
 }
 
 @media screen and (max-width: 1000px) {
   .navigation {
     position: relative;
+  }
+
+  .navigation__profile-img {
+    margin: 0 0 0 14px;
+    background-size: 15px;
   }
 
   .navigation__active {
@@ -75,9 +91,10 @@
     max-width: 520px;
     margin: 0;
     background-color: #ffffff;
-    position: absolute;
+    position: fixed;
     top: 0;
-    right: -30px;
+    right: 0;
+
     padding: 0;
   }
 
@@ -85,7 +102,7 @@
     display: none;
   }
 
-  .navigation__list__burger {
+  .navigation__list-burger {
     color: #000000;
     list-style: none;
     font-style: normal;
@@ -102,19 +119,34 @@
     max-width: 340px;
   }
 
-  .navigation__link__main {
+  .navigation__link-main {
     display: block;
     margin: 159px 0 28px 0;
     text-decoration: none;
+    color: #000000;
   }
 
-  .navigation__link__movies {
+  .navigation__link-main:hover {
+    text-decoration: underline;
+  }
+  .navigation__link-movies {
     margin: 0 0 28px 0;
+    color: #000000;
   }
 
-  .navigation__link__movies-saved {
-    margin: 0 0;
+  .navigation__link-movies:hover {
+    text-decoration: underline;
   }
+
+  .navigation__link-movies-saved {
+    margin: 0 0;
+    color: #000000;
+  }
+
+  .navigation__link-movies-saved:hover {
+    text-decoration: underline;
+  }
+
   .navigation__toggle {
     display: block;
     margin: 15px 0 15px auto;
@@ -128,9 +160,9 @@
     cursor: pointer;
     border: none;
     position: relative;
-    background-image: url("../../images/burger.jpg");
+    background-image: url("../../images/burger.svg");
   }
-  .navigation__toggle__active {
+  .navigation__toggle-active {
     display: block;
     margin: 15px auto 15px auto;
     height: 44px;
@@ -148,7 +180,12 @@
 
   .navigation__profile {
     display: flex;
-    margin: 300px 90px 0 90px;
+    margin: 621px 90px 0 90px;
+    justify-content: space-between;
+  }
+
+  .navigation__profile:hover {
+    text-decoration: solid;
   }
 }
 
@@ -157,17 +194,12 @@
     display: flex;
     border: none;
     z-index: 2;
-    height: 100vh;
-    width: 320px;
+    width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
   }
-  .navigation__list__burger {
+  .navigation__list-burger {
     color: #000000;
     list-style: none;
     font-style: normal;
@@ -176,17 +208,15 @@
     font-size: 18px;
     line-height: 22px;
     margin: 0 auto;
-
-    width: 300px;
   }
 
   .navigation__toggle {
-    width: 40px;
+    width: 30px;
     height: 43px;
-    margin: 15px 0 auto auto;
+    margin: 15px 15px auto 0;
   }
 
-  .navigation__toggle__active {
+  .navigation__toggle-active {
     display: block;
     margin: 0;
     width: 44px;
@@ -197,5 +227,34 @@
     background-image: url("../../images/close.svg");
     background-repeat: no-repeat;
     background-position: center;
+  }
+
+  .navigation__link-main {
+    margin-top: 144px;
+    margin-bottom: 24px;
+  }
+
+  .navigation__link-movies {
+    margin: 0 auto 24px auto;
+  }
+
+  .navigation__list {
+    margin-bottom: 0;
+  }
+
+  .navigation__link-movies-saved {
+    margin-bottom: 0;
+  }
+  .navigation__profile {
+    display: flex;
+    margin: 440px auto 48px auto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  .navigation__profile-img {
+    background-size: 12px;
   }
 }

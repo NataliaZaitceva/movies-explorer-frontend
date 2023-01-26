@@ -1,59 +1,54 @@
-.main__about {
-  height: 608;
+.main-about {
   display: flex;
   flex-direction: column;
+  margin: 0 70px;
 }
 
-.main__header {
-  height: 160px;
+.main-about__header {
   max-width: 1140px;
   justify-content: center;
   border-bottom: 1px #000000 solid;
 }
 
-.main__header__subtitle {
+.main-about__subtitle {
   margin: 110px auto 23px 0;
   padding: 0;
   font-size: 22px;
   font-weight: 400;
   line-height: 27px;
+  letter-spacing: -0.04em;
 }
+.main-about__table {
+  width: 100%;
+  margin: 70px 0 0 0;
+  padding: 0;
 
-.main__about__headers {
-  margin: 70px 0 15px 0;
+  display: flex;
+}
+.main-about__headers {
+  margin: 0 0 15px 0;
   flex-direction: row;
   display: flex;
 }
-.main__about__info-subtitle {
-  margin: 0;
+
+.main-about__info-subtitle {
+  margin: 0 0 10px 0;
+  font-style: normal;
+  font-weight: 400;
   font-size: 20px;
   line-height: 24px;
+  letter-spacing: -0.04em;
+}
+
+.main-about__info-text {
+  font-style: normal;
   font-weight: 400;
-  width: 550px;
-}
-
-.main__about__info-subtitle:last-of-type {
-  margin-left: 40px;
-}
-
-.main__about__info {
   font-size: 14px;
   line-height: 20px;
-  font-weight: 400;
-  margin: 0;
-  padding: 0;
-  flex-direction: row;
-  display: flex;
+  margin-right: 35px;
 }
 
-.main__about__info-text {
-  width: 550px;
-}
-.main__about__info-text:last-of-type {
-  margin-left: 40px;
-}
-
-.main__about__time {
+.main-about__time {
   margin: 90px auto 0 auto;
   flex-direction: row;
   display: flex;
@@ -62,7 +57,7 @@
   width: 100%;
 }
 
-.main__about__time-1 {
+.main-about__time-1 {
   width: 228px;
   height: 28px;
   color: #ffffff;
@@ -77,40 +72,67 @@
   display: flex;
 }
 
-.main__about__time-2 {
+.main-about__time-2 {
   padding-top: 9px;
   background-color: #f2f2f2;
   border: none;
   font-size: 14px;
   font-weight: 400;
   line-height: 17px;
-  margin: 0 0 100px 0;
+  margin: 0 0 135px 0;
   width: 912px;
   flex-direction: column;
   display: flex;
   height: 28px;
 }
 
-.main__about__time-span {
+.main-about__time-span {
   background-color: #ffffff;
   color: #a0a0a0;
   font-size: 14px;
   line-height: 17px;
-  font-weight: 500px;
-  margin: 14px auto 0 auto;
+  font-weight: 500;
+  margin: 25px auto 0 auto;
   width: 100%;
 }
 
+@media screen and (max-width: 768px) {
+  .main-about {
+    margin: 0 50px 0px 50px;
+  }
+
+  .main-about__info-subtitle {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.04em;
+  }
+
+  .main-about__info-text {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    margin-bottom: 0;
+  }
+
+  .main-about__time-2 {
+    margin-bottom: 120px;
+  }
+
+  .main-about__subtitle {
+    margin-top: 90px;
+  }
+}
+
 @media screen and (max-width: 500px) {
-  .main__about {
+  .main-about {
     flex-direction: column;
   }
 
-  .main__about__headers {
-    flex-direction: column;
-  }
-
-  .main__about__info-subtitle {
+  .main-about__info-subtitle {
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -119,14 +141,66 @@
     max-width: 400px;
   }
 
-  .main__about__info-subtitle:last-of-type {
+  .main-about__info-subtitle:last-of-type {
     margin-left: 0;
   }
 
-  .main__about__info-text {
+  .main-about__info-text {
     max-width: 400px;
   }
-  .main__about__info-text:last-of-type {
+  .main-about__info-text:last-of-type {
     margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .main-about {
+    margin: 0 14px;
+  }
+  .main-about__table {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-about__subtitle {
+    margin-top: 70px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -0.04em;
+  }
+
+  .main-about__info-text {
+    margin-top: 0;
+    margin-bottom: 56px;
+  }
+
+  .main-about__time {
+    margin: 0 10px 10px 10px;
+  }
+
+  .main-about__time-1 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    text-align: center;
+  }
+
+  .main-about__time-2 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    text-align: center;
+    margin-bottom: 90px;
+  }
+
+  .main-about__time-span {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
   }
 }

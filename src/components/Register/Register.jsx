@@ -12,16 +12,16 @@ function Register(props) {
       </div>
       <form className="register__form">
         <h3 className="register__form-name">Имя</h3>
-        <input className="registration__input" value="Виталий" required></input>
+        <input className="register__input" value="Виталий" required></input>
         <h3 className="register__form-name">Email</h3>
         <input
-          className="registration__input"
+          className="register__input"
           value="pochta@yandex.ru"
           required
         ></input>
-        <h3 className="register__form-name">Email</h3>
+        <h3 className="register__form-name">Пароль</h3>
         <input
-          className="registration__input"
+          className="register__input"
           value="password"
           required
         ></input>
@@ -31,9 +31,9 @@ function Register(props) {
           Зарегистрироваться
         </button>
       </form>
-      <p className="registration__text">
+      <p className="register__text">
         Уже зарегистрированы?{" "}
-        <Link className="registration__link" to="/signin">
+        <Link className="register__link" to="/signin">
           Войти
         </Link>
       </p>

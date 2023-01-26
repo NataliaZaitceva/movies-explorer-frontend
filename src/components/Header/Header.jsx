@@ -23,8 +23,8 @@ function Header(props) {
         path="/"
         element={
           <>
-            <header className="header__main_background">
-              <img className="header__logo" src={logo} alt="Лого" />
+            <header className="header header-main">
+              <img className="logo" src={logo} alt="Лого" />
 
               <div className="header__links">
                 <Link to="/signup" className="header__registraton">
@@ -45,12 +45,7 @@ function Header(props) {
         path="/movies"
         element={
           <header className="header">
-            <img
-              className="header__logo"
-              src={logo}
-              alt="Лого"
-              onClick={openMain}
-            />
+            <img className="logo" src={logo} alt="Лого" onClick={openMain} />
 
             <Navigation
               isOpen={isMenuBurgerOpen}
@@ -64,12 +59,7 @@ function Header(props) {
         path="/saved-movies"
         element={
           <header className="header">
-            <img
-              className="header__logo"
-              src={logo}
-              alt="Лого"
-              onClick={openMain}
-            />
+            <img className="logo" src={logo} alt="Лого" onClick={openMain} />
 
             <Navigation />
           </header>
@@ -80,12 +70,7 @@ function Header(props) {
         path="/profile"
         element={
           <header className="header">
-            <img
-              className="header__logo"
-              src={logo}
-              alt="Лого"
-              onClick={openMain}
-            />
+            <img className="logo" src={logo} alt="Лого" onClick={openMain} />
 
             <Navigation />
           </header>

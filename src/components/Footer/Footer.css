@@ -2,11 +2,13 @@
   max-height: 172px;
   display: flex;
   flex-direction: column;
+  margin: 0 70px;
+  position: relative;
 }
 
 .footer__title {
   margin: 79px auto 20px auto;
-  max-width: 1140px;
+  width: 100%;
   padding-bottom: 20px;
   border-bottom: #e8e8e8 solid 1px;
   color: #a0a0a0;
@@ -17,7 +19,8 @@
 
 .footer__copyright {
   font-size: 13px;
-  margin: 0 auto 0 70px;
+  margin: 0 auto 0 0;
+  position: absolute;
 }
 
 .footer__links {
@@ -25,9 +28,7 @@
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
-  margin: 0;
   display: flex;
-  justify-content: space-between;
 }
 
 .footer__link {
@@ -35,18 +36,40 @@
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
-  margin: 0 70px 20px 0;
+  margin: 0 0 20px auto;
   padding: 0;
   color: #000;
+  justify-content: space-between;
 }
 
 .footer__link:first-of-type {
   margin-right: 20px;
 }
 
-@media screen and (max-width: 768px) {
+.footer__link:last-of-type {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+@media screen and (max-width: 1000px) {
+  .footer {
+    margin: 0 30px;
+  }
+
+  .footer__title {
+    margin: 90px 30px 20px auto;
+    max-width: 100%;
+  }
   .footer__copyright {
-    margin: 0 auto 0 0;
+    margin: 0;
+  }
+
+  .footer__links {
+    margin-top: 0;
+  }
+
+  .footer__link:last-of-type {
+    margin-right: 0px;
   }
 }
 
@@ -54,10 +77,10 @@
   .footer {
     height: 253px;
     position: relative;
-  }
-
-  .footer__links {
-    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
   }
 
   .footer__title {
@@ -67,22 +90,24 @@
     line-height: 15px;
     padding-bottom: 21px;
     border-bottom: #a0a0a0 1px solid;
-    margin-bottom: 0;
+    text-align: center;
+    margin: 50px 0 0 0;
   }
 
   .footer__links {
-    text-align: center;
-    justify-content: space-between;
+    flex-direction: column;
     padding: 0;
     margin: 0 auto;
-    position: relative;
+    position: absolute;
+    top: 146px;
+    align-items: center;
+    justify-content: center;
   }
 
   .footer__copyright {
     margin: 30px auto 10px auto;
-
-    right: 70px;
-    align-self: center;
+    position: absolute;
+    top: 57px;
   }
 
   .footer__link {
@@ -97,6 +122,10 @@
 
   .footer__link:first-of-type {
     margin-right: auto;
-    margin-top: 30px;
+    margin-top: 0px;
+  }
+
+  .footer__link:last-of-type {
+    margin: 0 auto;
   }
 }

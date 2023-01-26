@@ -100,7 +100,7 @@ const movies = [
 function MoviesCardList(props) {
   return (
     <>
-      <ul className="cards__list">
+      <ul className="cards-list">
         {movies.map((movie) => {
           return <MoviesCard key={movie._id} card={movie} />;
         })}

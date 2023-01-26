@@ -3,23 +3,22 @@
   display: flex;
   flex-direction: row;
   padding-right: 70px;
-  max-width: 100%;
 }
 
-.header__logo {
+.logo {
   max-width: 38px;
   max-height: 38px;
   margin: 18px auto 18px 70px;
   cursor: pointer;
+  color: #000;
 }
 
-.header__main_background {
+.header-main {
   background-color: #f3c1f8;
   height: 74px;
   display: flex;
   flex-direction: row;
   padding-right: 70px;
-  max-width: 1280px;
 }
 
 .header__links {
@@ -33,12 +32,13 @@
   line-height: 16px;
   text-align: right;
   text-decoration: none;
+  color: #000;
 }
 
 .header__login {
   color: #ffffff;
   border: 0;
-
+  border-radius: 3px;
   font-family: "Inter";
   font-style: normal;
   font-weight: 500;
@@ -56,18 +56,31 @@
 }
 
 @media screen and (max-width: 1000px) {
-  .header {
-    padding-right: 15px;
-    margin: 0;
+  .logo {
+    margin: 18px auto 18px 38px;
   }
 
-  .header__logo {
-    margin: 18px auto 18px 14px;
+  .header-main {
+    padding-right: 16px;
+  }
+
+  .header__button {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .logo {
+    margin-left: 30px;
+  }
+
+  .header {
+    padding-right: 30px;
   }
 }
 
 @media screen and (max-width: 500px) {
-  .header__main_background {
+  .header-main {
     padding-right: 14px;
   }
 
@@ -78,5 +91,30 @@
 
   .header__registraton {
     margin: 0;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .header-main {
+    padding-right: 0;
+  }
+
+  .header {
+    padding-right: 0;
+    width: 100%;
+  }
+
+  .header__button {
+    margin-right: 14px;
+    margin-left: 14px;
+    width: 54px;
+  }
+
+  .header__registraton {
+    margin: 0;
+  }
+
+  .logo {
+    margin: 18px auto 18px 14px;
   }
 }
