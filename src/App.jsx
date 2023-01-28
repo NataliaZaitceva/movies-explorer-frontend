@@ -7,12 +7,11 @@ import {
   useNavigate,
   BrowserRouter,
 } from "react-router-dom";
-import { CurrentUserContext } from "./context/CurrentUserContext";
+
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import SavedMovies from "./components/SavedMovies/SavedMovies";
 import "./App.css";
-import NotFound from "./components/NotFound/NotFound";
 import Movies from "./components/Movies/Movies";
 import Register from "./components/Register/Register";
 import Profile from "./components/Profile/Profile";

@@ -61,7 +61,10 @@ function Header(props) {
           <header className="header">
             <img className="logo" src={logo} alt="Лого" onClick={openMain} />
 
-            <Navigation />
+            <Navigation
+              isOpen={isMenuBurgerOpen}
+              onClick={handleMenuBurger}
+            ></Navigation>
           </header>
         }
       />

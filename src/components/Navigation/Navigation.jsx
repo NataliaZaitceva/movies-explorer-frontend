@@ -10,7 +10,7 @@ function Navigation(props) {
           props.isOpen ? "navigation__list-burger" : ""
         }`}
       >
-        <Link className="navigation__link-main">Главная</Link>
+        <Link className="navigation__link-main" to="/">Главная</Link>
         <Link className="navigation__link-movies" to="/movies">
           {" "}
           Фильмы
