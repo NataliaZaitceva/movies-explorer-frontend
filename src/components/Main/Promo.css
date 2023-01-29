@@ -4,7 +4,6 @@
   padding: 0;
   background-color: #f3c1f8;
   position: relative;
-  max-width: 100%;
 }
 
 .promo__landing {
@@ -43,7 +42,7 @@
   width: 129px;
   height: 36px;
   border: #000000 solid 1px;
-  margin: 135px auto 75px 0;
+  margin: 135px auto 0 0;
   background-color: transparent;
   cursor: pointer;
   justify-content: center;
@@ -60,9 +59,7 @@
     display: flex;
     margin: 0;
     padding: 0;
-
     flex-direction: column-reverse;
-    align-items: center;
     justify-content: center;
     vertical-align: middle;
     position: relative;
@@ -150,16 +147,20 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 400px) {
   .promo {
     margin: 0;
     padding: 0;
-    width: 100%;
   }
 
-  .promo__logo {
-    margin-top: 70px;
-  }
+ .promo__landing {
+  margin: 0;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+
+ }
 
   .promo__button {
     margin-bottom: 30px;
@@ -170,10 +171,10 @@
     font-size: 30px;
     line-height: 38px;
     letter-spacing: -0.04em;
-    margin: 0 auto;
-    width: 300px;
+    margin: 0 10px;
+  
   }
   .promo__text {
-    margin: 24px 30px 80px 24px;
+    margin: 24px 30px 80px 30px;
   }
 }

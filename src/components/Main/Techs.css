@@ -140,13 +140,13 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 500px) {
   .main-techs {
-    margin: 0 14px;
+    margin: 0 18px;
   }
 
   .main-techs__header-subtitle {
-    margin-top: 70px;
+    margin: 70px auto 28px auto;
     font-size: 18px;
     line-height: 22px;
   }
@@ -156,5 +156,13 @@
 
   .main-techs__list {
     margin-bottom: 70px;
+  }
+
+  .main-techs__item {
+    width: 84px;
+    font-weight: 400;
+font-size: 12px;
+line-height: 15px;
+letter-spacing: -0.04em;
   }
 }

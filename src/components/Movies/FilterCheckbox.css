@@ -65,3 +65,12 @@ input:checked + .filter__input-slider:before {
   font-size: 14px;
   line-height: 18px;
 }
+
+@media screen and (max-width: 500px){
+  .filter__text {
+    font-weight: 400;
+font-size: 11px;
+line-height: 18px;
+  }
+   
+}

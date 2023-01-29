@@ -2,7 +2,7 @@
   max-width: 381px;
   list-style: none;
   height: 18px;
-  margin: 28px 0 18px auto;
+  margin: 28px 70px 18px auto;
   padding: 0;
   display: flex;
   font-size: 14px;
@@ -213,7 +213,7 @@
   .navigation__toggle {
     width: 30px;
     height: 43px;
-    margin: 15px 15px auto 0;
+    margin: 15px 25px auto 0;
   }
 
   .navigation__toggle-active {

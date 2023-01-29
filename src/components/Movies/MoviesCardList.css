@@ -21,6 +21,7 @@
     grid-row-gap: 35px;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     padding-left: 0;
+    margin: 80px 30px 30px 30px;
   }
 }
 
@@ -29,5 +30,13 @@
     grid-gap: 16px;
     margin: 30px auto 0 auto;
     max-width: 300px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .cards-list {
+    margin: 40px auto 0 auto;
+    max-width: 300px;
+    grid-row: 16px;
   }
 }

@@ -14,7 +14,8 @@ function Header(props) {
   }
 
   function openMain() {
-    history("/");
+    window.open("/");
+    
   }
 
   return (
@@ -27,11 +28,11 @@ function Header(props) {
               <img className="logo" src={logo} alt="Лого" />
 
               <div className="header__links">
-                <Link to="/signup" className="header__registraton">
+                <Link to="/signup" className="header__registraton" target="_blank">
                   Регистрация
                 </Link>
                 <button className="header__button">
-                  <Link to="/signin" className="header__login">
+                  <Link to="/signin" className="header__login" target="_blank">
                     Войти
                   </Link>
                 </button>
@@ -45,7 +46,7 @@ function Header(props) {
         path="/movies"
         element={
           <header className="header">
-            <img className="logo" src={logo} alt="Лого" onClick={openMain} />
+            <img className="logo" src={logo} alt="Лого" onClick={openMain} target="_blank"/>
 
             <Navigation
               isOpen={isMenuBurgerOpen}

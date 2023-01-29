@@ -24,7 +24,7 @@
 }
 
 .footer__links {
-  margin: 20px 0 0 0;
+  margin: 0;
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
@@ -57,7 +57,7 @@
   }
 
   .footer__title {
-    margin: 90px 30px 20px auto;
+    margin: 80px 30px 20px auto;
     max-width: 100%;
   }
   .footer__copyright {
@@ -91,7 +91,7 @@
     padding-bottom: 21px;
     border-bottom: #a0a0a0 1px solid;
     text-align: center;
-    margin: 50px 0 0 0;
+    margin: 35px 0 0 0;
   }
 
   .footer__links {
@@ -105,9 +105,13 @@
   }
 
   .footer__copyright {
-    margin: 30px auto 10px auto;
+    margin: 20px auto 10px auto;
     position: absolute;
     top: 57px;
+    font-weight: 400;
+font-size: 12px;
+line-height: 15px;
+color: #A0A0A0;
   }
 
   .footer__link {

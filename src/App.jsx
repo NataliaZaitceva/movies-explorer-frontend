@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
   Navigate,
-  BrowserRouter as Router,
   Route,
   Routes,
   useNavigate,
@@ -24,12 +23,14 @@ function App() {
       <div className="page">
         <Header />
         <Routes>
+          
           <Route path="/" element={<Main />} />
           <Route path="movies" element={<Movies />} />
           <Route path="saved-movies" element={<SavedMovies />} />
           <Route path="profile" element={<Profile />} />
           <Route path="signup" element={<Register />} />
           <Route path="signin" element={<Login />} />
+
         </Routes>
         <Footer />
       </div>
