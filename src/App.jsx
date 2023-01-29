@@ -17,23 +17,24 @@ import Profile from "./components/Profile/Profile";
 import Login from "./components/Login/Login";
 import Footer from "./components/Footer/Footer";
 
+
 function App() {
   return (
     <BrowserRouter>
       <div className="page">
         <Header />
         <Routes>
+        <Route path='/' element={<Main /> } />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/saved-movies" element={<SavedMovies />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="signup" element={<Register />} />
+        <Route path="signin" element={<Login />} />
           
-          <Route path="/" element={<Main />} />
-          <Route path="movies" element={<Movies />} />
-          <Route path="saved-movies" element={<SavedMovies />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="signup" element={<Register />} />
-          <Route path="signin" element={<Login />} />
-
         </Routes>
-        <Footer />
+      
       </div>
+        <Footer />
     </BrowserRouter>
   );
 }

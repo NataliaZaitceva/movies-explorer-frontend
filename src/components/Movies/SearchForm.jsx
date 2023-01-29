@@ -1,8 +1,16 @@
 import React from "react";
 import "./SearchForm.css";
 import FilterCheckbox from "./FilterCheckbox";
+import { Routes, Route, } from "react-router-dom";
 function SearchForm() {
-  return (
+
+const Line = `${
+  window.location.pathname === '/movies' ? "search-form__line" : "search-form__line-shadow"
+}`
+  
+ return (
+
+  
     <section className="search-form">
       <form action="" className="search-form__form">
         <label for="site-search" />
@@ -17,9 +25,14 @@ function SearchForm() {
 
         <button className="search-form__find" type="submit" placeholder="" />
       </form>
+
       <FilterCheckbox />
-      <div className="search-form__line"></div>
-    </section>
+
+<div className={Line} />
+
+    </section> 
+    
+    
   );
 }
 

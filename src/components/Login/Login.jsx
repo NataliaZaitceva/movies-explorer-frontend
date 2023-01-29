@@ -21,7 +21,7 @@ function Login() {
       </form>
       <p className="login__text">
         Еще не зарегистрированы?{" "}
-        <Link className="login__link" to="/signup" target="_blank">
+        <Link className="login__link" to="/signup">
           Регистрация
         </Link>
       </p>

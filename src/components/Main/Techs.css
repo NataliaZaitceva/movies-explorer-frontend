@@ -82,11 +82,11 @@
 
 @media screen and (max-width: 768px) {
   .main-techs {
-    margin: 0 50px 0px 50px;
+    margin: 0;
   }
 
   .main-techs__header {
-    margin: 0;
+    margin: 0 50px;
   }
 
   .main-techs__header-subtitle {
@@ -144,25 +144,33 @@
   .main-techs {
     margin: 0 18px;
   }
-
+.main-techs__header {
+  margin: 0;
+}
   .main-techs__header-subtitle {
     margin: 70px auto 28px auto;
     font-size: 18px;
     line-height: 22px;
   }
+
   .main-techs__title {
     margin-top: 60px;
   }
 
   .main-techs__list {
-    margin-bottom: 70px;
+    margin-bottom: 85px;
   }
+.main-techs__text {
 
+width: 100%;
+}
   .main-techs__item {
     width: 84px;
     font-weight: 400;
 font-size: 12px;
 line-height: 15px;
 letter-spacing: -0.04em;
+height: 35px;
+margin-right: 0;
   }
 }

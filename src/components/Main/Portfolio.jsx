@@ -9,33 +9,35 @@ function Portfolio() {
       <h5 className="main-portfolio-title">Портфолио</h5>
       <ul className="main-portfolio-list">
         <li className="main-portfolio-link">
-          {" "}
-          <Link
-            className="main__link"
-            to="https://github.com/NataliaZaitceva/how-to-learn"
+        
+          <a     className="main__link"
+            href="https://github.com/NataliaZaitceva/how-to-learn" target="_blank"
           >
             Статичный сайт
-          </Link>{" "}
-          <img src={link} alt="перейти" className="main-portfolio-icon" />
+          
+          <img src={link} alt="перейти" className="main-portfolio-icon" target="_blank"/>
+          </a>
         </li>
         <li className="main-portfolio-link">
-          {" "}
-          <Link
+       
+          <a
             className="main__link"
-            to="https://nataliazaitceva.github.io/russian-travel/index.html"
+            href="https://nataliazaitceva.github.io/russian-travel/index.html"
           >
             Адаптивный сайт
-          </Link>{" "}
-          <img src={link} alt="перейти" className="main-portfolio-icon" />
+      
+          <img src={link} alt="перейти" className="main-portfolio-icon" target="_blank" />
+              </a>
         </li>
         <li className="main-portfolio-link">
-          <Link
+          <a
             className="main__link"
-            to="https://github.com/NataliaZaitceva/react-mesto-api-full"
+            href="https://github.com/NataliaZaitceva/react-mesto-api-full" target="_blank"
           >
             Одностраничное приложение
-          </Link>
-          <img src={link} alt="перейти" className="main-portfolio-icon" />
+  
+          <img src={link} alt="перейти" className="main-portfolio-icon" target="_blank" />
+                 </a> 
         </li>
       </ul>
     </div>

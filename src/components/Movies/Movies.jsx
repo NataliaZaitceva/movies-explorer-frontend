@@ -7,10 +7,10 @@ import "./Movies.css";
 
 function Movies() {
   return (
-    <section className="movies">
+    <main className="movies">
       <SearchForm />
       <MoviesCardList />
-    </section>
+    </main>
   );
 }
 

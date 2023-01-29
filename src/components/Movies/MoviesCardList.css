@@ -8,20 +8,23 @@
 
 @media screen and (max-width: 1200px) {
   .cards-list {
-    grid-gap: 24px;
-    grid-template-columns: repeat(auto-fit, minmax(342px, 1fr));
+    grid-gap: auto;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     padding-left: 0;
     margin: 60px auto 10px auto;
+    align-self: center;
+    align-items: center;
+    justify-items: center;
   }
 }
 
-@media screen and (max-width: 785px) {
+@media screen and (max-width: 1042px) {
   .cards-list {
     grid-column-gap: 24px;
     grid-row-gap: 35px;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     padding-left: 0;
-    margin: 80px 30px 30px 30px;
+    margin: 80px 10px 30px 10px;
   }
 }
 

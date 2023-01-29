@@ -28,11 +28,11 @@ function Header(props) {
               <img className="logo" src={logo} alt="Лого" />
 
               <div className="header__links">
-                <Link to="/signup" className="header__registraton" target="_blank">
+                <Link to="/signup" className="header__registraton">
                   Регистрация
                 </Link>
                 <button className="header__button">
-                  <Link to="/signin" className="header__login" target="_blank">
+                  <Link to="/signin" className="header__login">
                     Войти
                   </Link>
                 </button>
@@ -46,7 +46,7 @@ function Header(props) {
         path="/movies"
         element={
           <header className="header">
-            <img className="logo" src={logo} alt="Лого" onClick={openMain} target="_blank"/>
+            <img className="logo" src={logo} alt="Лого" onClick={openMain} />
 
             <Navigation
               isOpen={isMenuBurgerOpen}

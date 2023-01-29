@@ -10,17 +10,17 @@ function Navigation(props) {
           props.isOpen ? "navigation__list-burger" : ""
         }`}
       >
-        <Link className="navigation__link-main" to="/" target="_blank">Главная</Link>
-        <Link className="navigation__link-movies" to="/movies" target="_blank">
+        <Link className="navigation__link-main" to="/" >Главная</Link>
+        <Link className="navigation__link-movies" to="/movies" >
           {" "}
           Фильмы
         </Link>
 
-        <Link className="navigation__link-movies-saved" to="/saved-movies" target="_blank">
+        <Link className="navigation__link-movies-saved" to="/saved-movies" >
           Сохранённые фильмы
         </Link>
 
-            <Link className="navigation__profile" to="/profile" target="_blank">
+            <Link className="navigation__profile" to="/profile" >
   Аккаунт <div className="navigation__profile-img" />
               </Link>
          
