@@ -1,0 +1,12 @@
+.main { 
+  margin: 0;
+  padding: 0;
+}
+
+
+@media screen  and (max-width: 326){
+  .main {
+   width: 100%;
+  }
+  
+}

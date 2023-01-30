@@ -1,0 +1,32 @@
+.error-page {
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+}
+
+.error-page__404 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 140px;
+  line-height: 169px;
+  margin: 246px auto 5px auto;
+}
+
+.error-page__notfound {
+  margin: 0 auto 208px auto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.error-page__backspace {
+  margin: 0 auto 60px auto;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+}
