@@ -2,111 +2,129 @@ import React from "react";
 import MoviesCard from "./MoviesCard";
 import "./MoviesCardList.css";
 import MoreButton from "./MoreButton";
+import Preloader from "./Preloader"
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
+import fail from "../../images/fail.svg"
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
-import pic from "../../images/pic.jpg";
-import pic2 from "../../images/pic2.png";
-import pic3 from "../../images/pic3.png";
-import pic4 from "../../images/pic4.png";
-import pic5 from "../../images/pic5.png";
-import pic6 from "../../images/pic6.png";
-import pic7 from "../../images/pic8.png";
-import pic9 from "../../images/pic2.png";
-import pic10 from "../../images/pic10.png";
-import pic8 from "../../images/pic8.png";
-import pic11 from "../../images/pic11.png";
-import { useState } from "react";
+function MoviesCardList({cards,  movies, isLoading, isSavedFilm, handleCardSaved, handleCardDelete, savedMovies }) {
+ 
+  const [isBadRequest, setIsBadRequest] = useState(false);
+  const [isRequestEmpty, setIsRequestEmpty] = useState(false);
+ 
+const [shownMovies, setShownMovies] = useState(0);
 
-const movies = [
-  {
-    _id: 1,
-    image: pic,
-    title: "В погоне за Бэнкси",
-    duration: "27 минут",
-    saved: true,
-  },
-  {
-    _id: 2,
-    image: pic2,
-    title: "В погоне за Бэнкси",
-    duration: "27 минут",
-    saved: true,
-  },
-  {
-    _id: 3,
-    image: pic3,
-    title: "В погоне за Бэнкси",
-    duration: "27 минут",
-    saved: false,
-  },
-  {
-    _id: 4,
-    image: pic4,
-    title: "В погоне за Бэнкси",
-    duration: "27 минут",
-    saved: false,
-  },
-  {
-    _id: 5,
-    image: pic5,
-    title: "В погоне за Бэнкси",
-    duration: "27 минут",
-    saved: false,
-  },
-  {
-    _id: 6,
-    image: pic6,
-    title: "В погоне за Бэнкси",
-    duration: "27 минут",
-    saved: true,
-  },
-  {
-    _id: 7,
-    image: pic7,
-    title: "В погоне за Бэнкси",
-    duration: "27 минут",
-    saved: true,
-  },
-  {
-    _id: 8,
-    image: pic8,
-    title: "В погоне за Бэнкси",
-    duration: "27 минут",
-    saved: false,
-  },
-  {
-    _id: 9,
-    image: pic9,
-    title: "В погоне за Бэнкси",
-    duration: "27 минут",
-    saved: false,
-  },
-  {
-    _id: 10,
-    image: pic10,
-    title: "В погоне за Бэнкси",
-    duration: "27 минут",
-    saved: false,
-  },
-  {
-    _id: 11,
-    image: pic11,
-    title: "В погоне за Бэнкси",
-    duration: "27 минут",
-    saved: false,
-  },
-];
 
-function MoviesCardList(props) {
+ /* if (movies.length > 0) {
+    console.log("yes");
+  } else {
+    console.log("no");
+  }*/
+
+
+
+function shownCount() {
+  const display = window.innerWidth;
+  if (display > 1180) {
+    setShownMovies(3);
+  } else if (display > 1023) {
+    setShownMovies(2);
+  } else if (display > 800) {
+    setShownMovies(8);
+  } else if (display < 800) {
+    setShownMovies(5);
+  }
+}
+
+React.useEffect(() => {
+  shownCount();
+}, []);
+
+useEffect(() => {
+  setTimeout(() => {
+    window.addEventListener('resize', shownCount);
+  }, 500);
+});
+
+function showMore() {
+  const display = window.innerWidth;
+  if (display > 1180) {
+    setShownMovies(shownMovies + 4);
+  } else if (display > 1023) {
+    setShownMovies(shownMovies + 3);
+  }
+  // else if (display > 800) {
+  //   setShownMovies(shownMovies + 2);
+  // }
+  else if (display < 1023) {
+    setShownMovies(shownMovies + 2);
+  }
+}
+
+function getUsersMovies(movie, savedMovies) {
+    return savedMovies.find((savedMovie) => savedMovie.movieId === movie.id);
+    
+  }
+
+
   return (
-    <>
-      <ul className="cards-list">
-        {movies.map((movie) => {
-          return <MoviesCard key={movie._id} card={movie} />;
-        })}
+      <>
+        {isLoading && <Preloader />}
+          
+       {!isLoading && !isBadRequest && !isRequestEmpty && (
+        <>
+         {window.location.pathname === '/saved-movies' ? (
+          <>
+          <ul className="cards-list">
+          {  movies.map((movie) => (
+            <MoviesCard
+              key={isSavedFilm ? movie._id : movie.id}
+        movie={movie}
+      movies={movies}
+            handleCardSaved={handleCardSaved}
+              isSavedFilm={isSavedFilm}
+         // savedMovies={savedMovies}
+   saved={getUsersMovies(movie, savedMovies)}
+              handleCardDelete={handleCardDelete}
+            />
+          ))}
+          </ul>
+         </>
+       
+       ) : (
+        <>
+        <ul className="cards-list">
+        { movies.slice(0, shownMovies).map((movie) => (
+
+            <MoviesCard
+              key={isSavedFilm ? movie._id : movie.id}
+             movie={movie}
+       movies={movies}
+              handleCardSaved={handleCardSaved}
+            isSavedFilm={isSavedFilm}
+   savedMovies={savedMovies}
+           //   savedMovies={savedMovies}
+             handleCardDelete={handleCardDelete}
+    saved={getUsersMovies(movie, savedMovies)}
+             
+            />
+          ))}
       </ul>
-      <MoreButton />
+      <>
+                {movies.length > shownMovies ? (
+                 <MoreButton onClick={showMore}/>
+                ) : (
+                  ''
+                )}
+              </>
     </>
+
+       )}
+</>
+       )}
+       </>
   );
 }
 

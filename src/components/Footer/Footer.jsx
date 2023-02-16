@@ -16,14 +16,14 @@ function Footer() {
               <a
                 href="https://practicum.yandex.ru/"
                 className="footer__link"
-                target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 Яндекс.Практикум
               </a>
               <a
                 href="https://github.com/"
                 className="footer__link"
-                target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 Github
               </a>
@@ -44,14 +44,14 @@ function Footer() {
               <a
                 href="https://practicum.yandex.ru/"
                 className="footer__link"
-                target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 Яндекс.Практикум
               </a>
               <a
                 href="https://github.com/"
                 className="footer__link"
-                target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 Github
               </a>
@@ -72,19 +72,28 @@ function Footer() {
               <a
                 href="https://practicum.yandex.ru/"
                 className="footer__link"
-                target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 Яндекс.Практикум
               </a>
               <a
                 href="https://github.com/"
                 className="footer__link"
-                target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 Github
               </a>
               <p className="footer__copyright">© {new Date().getFullYear()}</p>
             </div>
+          </header>
+        }
+      />
+
+<Route
+        path="/profile"
+        element={
+          <header className="footer__profile">
+ 
           </header>
         }
       />
