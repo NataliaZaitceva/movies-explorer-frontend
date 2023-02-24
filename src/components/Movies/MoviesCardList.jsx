@@ -14,26 +14,19 @@ function MoviesCardList({cards,  movies, isLoading, isSavedFilm, handleCardSaved
   const [isBadRequest, setIsBadRequest] = useState(false);
   const [isRequestEmpty, setIsRequestEmpty] = useState(false);
  
-const [shownMovies, setShownMovies] = useState(0);
-
-
- /* if (movies.length > 0) {
-    console.log("yes");
-  } else {
-    console.log("no");
-  }*/
+const [shownMovies, setShownMovies] = useState([]);
 
 
 
 function shownCount() {
-  const display = window.innerWidth;
-  if (display > 1180) {
+
+  if (window.innerWidth > 1180) {
     setShownMovies(3);
-  } else if (display > 1023) {
+  } else if (window.innerWidth > 1023) {
     setShownMovies(2);
-  } else if (display > 800) {
+  } else if (window.innerWidth > 800) {
     setShownMovies(8);
-  } else if (display < 800) {
+  } else if (window.innerWidth < 800) {
     setShownMovies(5);
   }
 }
@@ -49,23 +42,22 @@ useEffect(() => {
 });
 
 function showMore() {
-  const display = window.innerWidth;
-  if (display > 1180) {
+  
+  if (window.innerWidth > 1180) {
     setShownMovies(shownMovies + 4);
-  } else if (display > 1023) {
+  } else if (window.innerWidth > 1023) {
     setShownMovies(shownMovies + 3);
   }
   // else if (display > 800) {
   //   setShownMovies(shownMovies + 2);
   // }
-  else if (display < 1023) {
+  else if (window.innerWidth < 1023) {
     setShownMovies(shownMovies + 2);
   }
 }
 
 function getUsersMovies(movie, savedMovies) {
     return savedMovies.find((savedMovie) => savedMovie.movieId === movie.id);
-    
   }
 
 
@@ -80,12 +72,12 @@ function getUsersMovies(movie, savedMovies) {
           <ul className="cards-list">
           {  movies.map((movie) => (
             <MoviesCard
-              key={isSavedFilm ? movie._id : movie.id}
+            key={isSavedFilm ? movie.id : movie._id}
         movie={movie}
       movies={movies}
             handleCardSaved={handleCardSaved}
               isSavedFilm={isSavedFilm}
-         // savedMovies={savedMovies}
+       savedMovies={savedMovies}
    saved={getUsersMovies(movie, savedMovies)}
               handleCardDelete={handleCardDelete}
             />
@@ -99,13 +91,12 @@ function getUsersMovies(movie, savedMovies) {
         { movies.slice(0, shownMovies).map((movie) => (
 
             <MoviesCard
-              key={isSavedFilm ? movie._id : movie.id}
+            key={ isSavedFilm ? movie.id : movie._id}
              movie={movie}
        movies={movies}
               handleCardSaved={handleCardSaved}
             isSavedFilm={isSavedFilm}
    savedMovies={savedMovies}
-           //   savedMovies={savedMovies}
              handleCardDelete={handleCardDelete}
     saved={getUsersMovies(movie, savedMovies)}
              

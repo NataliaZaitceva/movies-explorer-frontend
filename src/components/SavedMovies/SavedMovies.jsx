@@ -1,34 +1,16 @@
 import React, {useEffect, useState} from "react";
 import MoviesCardList from "../Movies/MoviesCardList";
 import SearchForm from "../Movies/SearchForm";
+import { filterDuration, filterMovies } from "../../utils/constants";
+function SavedMovies({  savedMovies, handleCardSaved, handleCardDelete}) {
+  const [searchRequest, setSearchRequest] = useState('');
+  const [filteredMovies, setFilteredMovies] = useState(savedMovies); 
+  const [isShortMovies, setIsShortMovies] = useState(false); 
+  const [isNotFound, setIsNotFound] = useState(false); 
 
-function SavedMovies({  savedMovies,  handleCardDelete}) {
-
-  const [filteredMovies, setFilteredMovies] = useState(savedMovies); //отфильтрованные по запросу и чекбоксу
-  const [isShortMovies, setIsShortMovies] = useState(false); //включен ли чекбокс короткометражек
-  const [isNotFound, setIsNotFound] = useState(false); //фильмы по запросу не найдены
-  const [searchQuery, setSearchQuery] = useState('');
   
-
-  function filterMovies(movies, request) { //поиск фильма по слову
-    const moviesFiltered = movies.filter((movie) => {
-      const movieRu = String(movie.nameRU).toLowerCase().trim();
-      const movieEn = String(movie.nameEN).toLowerCase().trim();
-      const userRequest = request.toLowerCase().trim();
-      return (
-        movieRu.indexOf(userRequest) !== -1 ||
-        movieEn.indexOf(userRequest) !== -1
-      );
-    });
-    return moviesFiltered;
-  }
-
-  function filterDuration(movies) { //фильтр короткометражек по чекбк
-    return  movies.filter((movie) => movie.duration < 40);
-  }
-
   function onSearchMovies(request) {
-    setSearchQuery(request);
+    setSearchRequest(request);
   }
 
   function handleShortMovies() {
@@ -36,9 +18,9 @@ function SavedMovies({  savedMovies,  handleCardDelete}) {
   }
 
   useEffect(() => {
-    const moviesList = filterMovies(savedMovies, searchQuery);
+    const moviesList = filterMovies(savedMovies, searchRequest);
     setFilteredMovies(isShortMovies ? filterDuration(moviesList) : moviesList);
-  }, [savedMovies, isShortMovies, searchQuery]);
+  }, [savedMovies, isShortMovies, searchRequest]);
 
 useEffect(() => {
     if (filteredMovies.length === 0) {
@@ -59,7 +41,7 @@ useEffect(() => {
   return (
     <main>
       <SearchForm onSearchMovies={onSearchMovies} onFilter={handleShortMovies}/>
-      <MoviesCardList savedMovies={savedMovies} movies={filteredMovies} isSavedFilm={true} handleCardDelete={handleCardDelete}/>
+      <MoviesCardList savedMovies={savedMovies} movies={filteredMovies} handleCardSaved={handleCardSaved} isSavedFilm={true} handleCardDelete={handleCardDelete}/>
     </main>
   );
 }

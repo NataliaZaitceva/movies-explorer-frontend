@@ -12,14 +12,14 @@ import {CurrentUserContext} from "../../context/CurrentUserContext";
     <section className="profile">
       <h2 className="profile__title">Привет, {currentUser.name}</h2>
       <div className="profile__form" >
-        <div>
+        <div  className="profile__input">
      
         <p className="profile__form-name"> Имя  </p>
 
           <p className="profile__form-input">{currentUser.name}</p>
         </div>
 
-        <div>   
+        <div className="profile__input">   
         <p className="profile__form-name"> Email  </p>
 
 <p className="profile__form-input">{currentUser.email}</p>

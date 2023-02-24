@@ -61,7 +61,7 @@ setUserInfo(user) {
     }).then((res) => this._getResponse(res)); 
   }
 
-  
+
     getContent(token) {
       return fetch('https://api.cinema.nomoredomains.club/users/me', {
         method: "GET",
@@ -113,12 +113,12 @@ createMovie(data)
   
   }
 
-deleteCard(cardId) {
-  return fetch(`https://api.cinema.nomoredomains.club/movies${cardId}`, {
+deleteCard(movieId) {
+  return fetch(`https://api.cinema.nomoredomains.club/movies/${movieId}`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${localStorage.getItem('jwt')}`,
-      'Content-Type': 'application/json',
+
     },
   }).then(this._getResponse);
 }

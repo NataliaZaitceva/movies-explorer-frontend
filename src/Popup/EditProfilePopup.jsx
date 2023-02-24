@@ -1,12 +1,22 @@
 import PopupWithForm from "./PopupWithForm";
 import React, { useState, useEffect } from "react";
 import  {CurrentUserContext}  from "../context/CurrentUserContext";
+import { useForm } from "react-hook-form";
+
 import "./EditProfilePopup.css"
 function EditProfilePopup(props) {
   const currentUser = React.useContext(CurrentUserContext);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  
+  const {
+    register,
+    formState: { errors },
+    handleSubmit, reset
+  } = useForm({
+    mode: "onBlur",
+  });
 
   function handleNameChange(e) {
     setName(e.target.value);
@@ -21,12 +31,13 @@ function EditProfilePopup(props) {
     setEmail(currentUser.email);
   }, [currentUser, props.isOpen]);
 
-  function handleSubmit(e) {
-    e.preventDefault();
+ const onSubmit = (data) => {
+ 
     props.onUpdateUser({
       name,
       email
     });
+    reset()
   }
 
   return (
@@ -35,11 +46,18 @@ function EditProfilePopup(props) {
       title="Редактировать профиль"
       isOpen={props.isOpen}
       onClose={props.onClose}
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit(onSubmit)}
       button="Сохранить"
     >
       <label htmlFor="name">
         <input
+               {...register("name",        
+               {
+                   required: "Поле обязательно к заполнению",
+                  
+                 },
+                 
+                 )}
           name="name"
           type="text"
           id="name"
@@ -52,9 +70,28 @@ function EditProfilePopup(props) {
           required=""
           onChange={handleNameChange}
         />
+<div >
+     
+     {errors?.email && (
+       <span className="popup__form-error">
+         {errors?.name?.message || "Error!"}
+       </span>
+     )}
+   </div>   
+
       </label>
       <label htmlFor="email">
         <input
+
+{...register("email",        
+{
+    required: "Поле обязательно к заполнению",
+ pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+
+  },
+
+  
+  )}
           name="email"
           type="text"
           id="email"
@@ -68,6 +105,15 @@ function EditProfilePopup(props) {
           onChange={handleEmailChange}
         />
       </label>
+      <div >
+     
+     {errors?.email && (
+       <span className="popup__form-error">
+         {errors?.email?.message || "Error!"}
+       </span>
+     )}
+   </div>
+
     </PopupWithForm>
   );
 }

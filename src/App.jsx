@@ -20,7 +20,6 @@ import Login from "./components/Login/Login";
 import Footer from "./components/Footer/Footer";
 import {CurrentUserContext} from "./context/CurrentUserContext";
 import auth from "./utils/MainApi";
-import * as movieApi from "./utils/MovieApi";
 import success from "./images/succes.svg";
 import fail from "./images/fail.svg";
 import InfoTooltip from "./components/InfoTooltip/InfoTooltip";
@@ -49,6 +48,8 @@ const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSavedMovie, setIsSavedMovie] = useState(false)
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [usersList, setUsersList] = useState(false)
+ const [newUsersList, setNewUsersList] = useState(false)
+
 const location = useLocation();
   const history = useNavigate();
 const path = location;
@@ -59,13 +60,13 @@ const path = location;
 
 
 
-  
+
   function handleRegister({name, email, password}) {
     auth
       .register(name, email, password)
       .then((user) => {
         handleLogin({ email, password });
-     setCurrentUser(name, email)
+     setCurrentUser(user)
       })
       .catch(() => {
         setDataInfoTool({
@@ -104,9 +105,13 @@ const path = location;
     auth
       .createMovie(movieData)
       .then((newMovie) => {
-        setSavedMovies([newMovie, ...savedMovies]);
-localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
+    const newFilm = [...savedMovies, newMovie];
+
+        
+localStorage.setItem('savedMovies', JSON.stringify(newFilm));
+setSavedMovies(savedMovies => ([...savedMovies, newMovie]))
  console.log(movieData)
+ console.log(newMovie)
        setDataInfoTool({
           text: "Сохранено",
           image: success,
@@ -162,10 +167,10 @@ setIsLoggedIn(true);
     localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
 }, [savedMovies])*/
 
-React.useEffect(() =>   {
+/*React.useEffect(() =>   {
    const usersMovies = localStorage.getItem('savedMovies') || [];            
 setSavedMovies(JSON.parse(usersMovies)); 
-}, [])
+}, [])*/
 
 
 
@@ -185,11 +190,15 @@ React.useEffect(() => {
      
 
   auth 
-        .getCards('jwt')
+        .getCards()
         
         .then(() => {
+      
 const usersMovies = localStorage.getItem('savedMovies') || [];            
 setSavedMovies(JSON.parse(usersMovies)); 
+//localStorage.setItem('savedMovies' )
+//console.log(localStorage.setItem('savedMovies')
+
 //setSavedMovies(usersMovies)
 //setUsersList(usersMovies)
         console.log(usersMovies)
@@ -202,13 +211,13 @@ setSavedMovies(JSON.parse(usersMovies));
   }, []); 
 
 
-React.useEffect(() => {
-    if (localStorage.getItem('savedMovies') === 'true') {
-      setUsersList(true);
+/*React.useEffect(() => {
+    if (localStorage.removeItem('movie._id')) {
+      setNewUsersList(true);
     } else {
-      setUsersList(false);
+      setNewUsersList(false);
     }
-  }, []);
+  }, []);*/
 
 
 
@@ -216,15 +225,23 @@ React.useEffect(() => {
     auth
       .deleteCard(movie._id)
       .then(() => {
-        setSavedMovies((oldMovies) => 
-        oldMovies.filter((oldMovie) => oldMovie._id !== movie._id));
-         setDataInfoTool({
-        text: "Удалено",
-        image: success,
-      });
-      handleInfoTooltipOpen();
-      })
-     
+
+
+const newMovies = savedMovies.filter((savedMovie) => savedMovie._id !== movie._id);
+localStorage.removeItem('movie._id');
+
+localStorage.setItem('savedMovies', JSON.stringify(newMovies));
+
+setSavedMovies(newMovies)
+setDataInfoTool({
+  text: "Удалено",
+  image: success,
+});
+handleInfoTooltipOpen();
+console.log(movie._id)
+
+  })
+  
       .catch(() => {
     
         setDataInfoTool({
@@ -235,10 +252,16 @@ React.useEffect(() => {
       });
   }
 
+
+/*React.useEffect(() =>   {
+   const newUsersMovies = localStorage.getItem('savedMovies') || [];            
+setSavedMovies(JSON.parse(newUsersMovies)); 
+}, [])*/
+
+
   function signOut() {
 
- // localStorage.clear();
-
+localStorage.clear();
     setIsLoggedIn(false);
     history("/");
   }
@@ -271,7 +294,7 @@ closePopup()
     <>
       <CurrentUserContext.Provider value={currentUser}>   
         <div className="page">
-          <Header />
+          <Header isLoggedIn={isLoggedIn}/>
       
           <Routes>
             <Route path="/" element={<Main />} />
@@ -297,7 +320,7 @@ closePopup()
                 <ProtectedRoute isLoggedIn={isLoggedIn}>
                   <SavedMovies
                   handleCardDelete={handleCardDelete}
-                    handleCardSaved={handleCardSaved}
+                  handleCardSaved={handleCardSaved}
                     savedMovies={savedMovies}
                     isLoggedIn={isLoggedIn}
                   />

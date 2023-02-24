@@ -1,25 +1,25 @@
 import React from "react";
 import "./MoviesCard.css";
-import { CurrentUserContext } from "../../context/CurrentUserContext";
 
-function MoviesCard({ card, movies, movie, newMovie,   isSavedFilm, saved, savedMovies, handleCardSaved, handleCardDelete }) {
 
-// const currentUser = React.useContext(CurrentUserContext) 
- const [isSavedCard, setIsSavedCard ] = React.useState(false)
- 
-  
+function MoviesCard({ card, movies, movie, newMovie, isSavedFilm, saved, savedMovies, handleCardSaved, handleCardDelete }) {
+
+
  function onClick() {
-  
-     handleCardSaved(movie)
-     setIsSavedCard(true)
+  if (!saved) {
+     handleCardSaved(movie);
+  } else {
+   handleCardDelete(savedMovies.filter((m) => m.movieId === movie.id)[0]);
+  }
+
 } 
 
-  function deleteCard() {
 
-   handleCardDelete(movie) 
-   setIsSavedCard(false)
-}
+  function deleteCard() {
+    handleCardDelete(movie)
+  }
      
+
 
   const cardSaveButton = `${
    saved ? "card__button-active" : "card__button"
@@ -28,24 +28,24 @@ function MoviesCard({ card, movies, movie, newMovie,   isSavedFilm, saved, saved
 
 
   return (
-    <li className="card" key={movie.id}>
-      <div className="card__header">
-        <h3 className="card__header-title">{movie.nameRU}</h3>
-        <span className="card__header-time">{movie.duration} минут</span>
+    <li className="card" key={movie.id || movie._id} >
+      <div className="card__header" key={movie.header}>
+        <h3 className="card__header-title" key={movie.nameRU}>{movie.nameRU}</h3>
+        <span className="card__header-time" key={movie.duration}>{movie.duration} минут</span>
         
       </div>
       
-      <a href={movie.trailerLink} target="_blank" rel="noreferrer" className="card__link">
-      <img className="card__image" src={window.location.pathname === "/saved-movies" ? movie.image : `https://api.nomoreparties.co/${movie.image.url}`} alt={movie.title} />
+      <a href={movie.trailerLink} target="_blank" rel="noreferrer" className="card__link" key={movie.link}>
+      <img key={movie.image} className="card__image" src={window.location.pathname === "/saved-movies" ? movie.image : `https://api.nomoreparties.co/${movie.image.url}`} alt={movie.title} />
 
 
       </a>
 
     
       {window.location.pathname === "/saved-movies" ? (
-        <button className="card__button-delete" type="button" onClick={deleteCard}/>
+        <button key={movie.delete} className="card__button-delete" type="button" onClick={deleteCard}/>
       ) : (
-        <button className={cardSaveButton} type="button" onClick={onClick}/>
+        <button key={movie.button} className={cardSaveButton} type="button" onClick={onClick}/>
       )
          
       }

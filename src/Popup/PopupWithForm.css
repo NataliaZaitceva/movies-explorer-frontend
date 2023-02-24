@@ -14,6 +14,7 @@
 }
 
 
+
 .popup_opened {
         opacity: 1;
         visibility: visible;    
@@ -96,19 +97,3 @@
     }
 }
 
-.button_view_close {
-    position: absolute;
-    top: -42px;
-    right: -42px;
-    background-image: url(../../src/images/close.svg);
-    background-size: 32px;
-    width: 32px;
-    height: 32px;
-    display: block;
-    border: none;
-    background-color: black;
-}
-
-.button_view_close:hover {
-    opacity: 0.6;
- }
