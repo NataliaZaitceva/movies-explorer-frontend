@@ -25,6 +25,7 @@ import fail from "./images/fail.svg";
 import InfoTooltip from "./components/InfoTooltip/InfoTooltip";
 import ProtectedRoute from "./components/ProtectedRoute";
 import EditProfilePopup from "./Popup/EditProfilePopup";
+import * as movieApi from './utils/MovieApi'
 
 
 function App() {
@@ -38,7 +39,7 @@ const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [dataInfoTool, setDataInfoTool] = useState({ text: "", image: "" });
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-
+const [isFilm, setIsFilm] = useState({})
   const [savedMovies, setSavedMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -49,6 +50,9 @@ const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [usersList, setUsersList] = useState(false)
  const [newUsersList, setNewUsersList] = useState(false)
+
+ const [isShortMovies, setIsShortMovies] = useState(false);
+
 
 const location = useLocation();
   const history = useNavigate();
@@ -98,6 +102,7 @@ const path = location;
       });
       
   }
+
 
 
   function handleCardSaved(movieData) {
@@ -172,6 +177,21 @@ setIsLoggedIn(true);
 setSavedMovies(JSON.parse(usersMovies)); 
 }, [])*/
 
+
+
+function getFilms() {
+  movieApi
+     .getMovies()
+     .then((moviesData) => {
+     setIsFilm(moviesData);
+       console.log("загрузка фильмов");
+       console.log(moviesData)
+     })
+     .catch(() => {
+      
+      console.log(" фильмов нет");
+     })
+ }
 
 
 
@@ -308,7 +328,9 @@ closePopup()
                     handleCardSaved={handleCardSaved}
                    savedMovies={savedMovies}
                     handleCardDelete={handleCardDelete}
-              
+                    isOpen={isInfoTooltipOpen}
+        
+getFilms={getFilms}
                   />
                 </ProtectedRoute>
               }
