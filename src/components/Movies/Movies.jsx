@@ -41,9 +41,10 @@ function Movies({ handleCardSaved, getFilms, savedMovies, handleCardDelete }) {
       const movies = JSON.parse(localStorage.getItem("allFindedMovies"));
    
       handleFilter(movies, request, isShortMovies);
- getFilms()
+      getFilms()
     } else {
-
+      setIsNotFound(true);
+  
   }
   }
 
@@ -123,9 +124,8 @@ function Movies({ handleCardSaved, getFilms, savedMovies, handleCardDelete }) {
    movies={isFilteredMovies}
    setIsNotFound={setIsNotFound}
    isNotFound={isNotFound}
-   isRequestError={isRequestError}
-   setIsRequestErr={setIsRequestError}
-
+setIRequestError={setIsRequestError}
+isRequestError={isRequestError}
           handleCardSaved={handleCardSaved}
           savedMovies={savedMovies}
           isLoading={isLoading}

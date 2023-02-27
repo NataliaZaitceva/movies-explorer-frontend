@@ -6,6 +6,17 @@
   list-style: none;
 }
 
+.cards-list__notice {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #ff4062;
+  margin: 6px auto 0 0;
+  justify-content: center;
+  display: flex;
+}
+
 @media screen and (max-width: 1200px) {
   .cards-list {
     grid-gap: auto;

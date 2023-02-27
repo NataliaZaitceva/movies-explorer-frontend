@@ -91,7 +91,7 @@
   line-height: 12px;
   color: #ff4062;
   margin: 6px auto 0 0;
-  justify-content: start;
+  justify-content: center;
   display: flex;
 }
 @media screen and (max-width: 1200px) {

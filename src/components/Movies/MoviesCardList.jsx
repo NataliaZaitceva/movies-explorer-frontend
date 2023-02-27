@@ -3,35 +3,29 @@ import MoviesCard from "./MoviesCard";
 import "./MoviesCardList.css";
 import MoreButton from "./MoreButton";
 import Preloader from "./Preloader";
-import { CurrentUserContext } from "../../context/CurrentUserContext";
-import fail from "../../images/fail.svg";
 import { useState, useEffect } from "react";
-import InfoTooltip from "../InfoTooltip/InfoTooltip";
 
 function MoviesCardList({
-  cards,
   movies,
   isLoading,
-  isSavedFilm,
   handleCardSaved,
   handleCardDelete,
   savedMovies,
-  setIsNotFound,
   isNotFound,
-
+isRequestError
 }) {
 
 
   const [shownMovies, setShownMovies] = useState([]);
 
   function shownFilmsByRequest() {
-    if (window.innerWidth > 1180) {
+    if (window.innerWidth === 1280) {
       setShownMovies(12);
-    } else if (window.innerWidth > 1023) {
-      setShownMovies(2);
-    } else if (window.innerWidth > 800) {
+    } else if (window.innerWidth < 1200) {
       setShownMovies(8);
-    } else if (window.innerWidth < 800) {
+    } else if (window.innerWidth < 769) {
+      setShownMovies(8);
+    } else if (window.innerWidth < 500) {
       setShownMovies(5);
     }
   }
@@ -43,12 +37,12 @@ function MoviesCardList({
   useEffect(() => {
     setTimeout(() => {
       window.addEventListener("resize", shownFilmsByRequest);
-    }, 500);
+    }, 700);
   });
 
   function shownMoreFilms() {
     if (window.innerWidth > 1180) {
-      setShownMovies(shownMovies + 4);
+      setShownMovies(shownMovies + 3);
     } else if (window.innerWidth > 1023) {
       setShownMovies(shownMovies + 3);
     } else if (window.innerWidth < 1023) {
@@ -65,7 +59,8 @@ function MoviesCardList({
     <>
       {isLoading && <Preloader />}
 
-{!isLoading && isNotFound && <div>Ничего не найдено</div>}
+{!isLoading && isNotFound && <div className="cards-list__notice">Ничего не найдено</div>}
+{!isLoading && isRequestError && <div className="cards-list__notice">Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз</div>}  
       {!isLoading && !isNotFound && (
         <>
           {window.location.pathname === "/saved-movies" ? (

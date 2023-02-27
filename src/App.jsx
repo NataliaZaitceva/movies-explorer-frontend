@@ -62,6 +62,11 @@ const path = location;
     setIsInfoTooltipOpen(true);
   }
 
+  useEffect(() => {
+    setTimeout(() => {
+      window.addEventListener("resize");
+    }, 600);
+  });
 
 
 
