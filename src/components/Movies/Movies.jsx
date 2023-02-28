@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import SearchForm from "./SearchForm";
 import MoviesCardList from "./MoviesCardList";
 import "./Movies.css";
-import * as movieApi from '../../utils/MovieApi'
+import * as movieApi from "../../utils/MovieApi";
 import { filterDuration, filterMovies } from "../../utils/constants";
-
 
 function Movies({ handleCardSaved, getFilms, savedMovies, handleCardDelete }) {
   const [initialMovies, setInitialMovies] = useState([]);
@@ -16,53 +15,49 @@ function Movies({ handleCardSaved, getFilms, savedMovies, handleCardDelete }) {
 
   const [isNotFound, setIsNotFound] = useState(false); //фильмы по запросу не найдены
 
-  const [isFilm, setIsFilm] = useState({})
+  const [isFilm, setIsFilm] = useState({});
 
-
-  function handleFilter(movies, request, isShortMovies) { 
+  function handleFilter(movies, request, isShortMovies) {
     const moviesList = filterMovies(movies, request, isShortMovies);
     setInitialMovies(moviesList);
     console.log(moviesList.length);
-    setIsFilteredMovies(isShortMovies ? filterDuration(moviesList) : moviesList);
+    setIsFilteredMovies(
+      isShortMovies ? filterDuration(moviesList) : moviesList
+    );
     localStorage.setItem("movies", JSON.stringify(moviesList));
     localStorage.setItem("allFindedMovies", JSON.stringify(movies));
   }
 
-
   function onSearchMovies(request) {
-
-    console.log('отправляем запрос')
-    console.log(request)
+    console.log("отправляем запрос");
+    console.log(request);
     localStorage.setItem("movieSearch", request);
     localStorage.setItem("shortMovies", isShortMovies);
     if (localStorage.getItem("allFindedMovies")) {
       const movies = JSON.parse(localStorage.getItem("allFindedMovies"));
-   
+
       handleFilter(movies, request, isShortMovies);
     } else {
-
       movieApi
         .getMovies()
         .then((cardsData) => {
           handleFilter(cardsData, request, isShortMovies);
           setIsFilm(cardsData);
           console.log("загрузка фильмов");
-          console.log(cardsData)
+          console.log(cardsData);
         })
         .catch((err) => {
-          setIsNotFound(true)
+          setIsNotFound(true);
           console.log(err);
-        })
-
+        });
     }
   }
-  
 
   useEffect(() => {
-    if (localStorage.getItem('movieSearch')) {
+    if (localStorage.getItem("movieSearch")) {
       if (isFilteredMovies.length === 0) {
         setIsNotFound(true);
-        console.log('nothing')
+        console.log("nothing");
       } else {
         setIsNotFound(false);
       }
@@ -77,7 +72,6 @@ function Movies({ handleCardSaved, getFilms, savedMovies, handleCardDelete }) {
     if (!isShortMovies) {
       if (filterDuration(initialMovies).length === 0) {
         setIsFilteredMovies(filterDuration(initialMovies));
-      
       } else {
         setIsFilteredMovies(filterDuration(initialMovies));
       }
@@ -87,10 +81,8 @@ function Movies({ handleCardSaved, getFilms, savedMovies, handleCardDelete }) {
     localStorage.setItem("shortMovies", !isShortMovies);
   }
 
-   
-
   useEffect(() => {
-    if (localStorage.getItem("movies") ) {
+    if (localStorage.getItem("movies")) {
       const movies = JSON.parse(localStorage.getItem("movies"));
       setInitialMovies(movies);
       console.log("movies");
@@ -98,26 +90,18 @@ function Movies({ handleCardSaved, getFilms, savedMovies, handleCardDelete }) {
         setIsFilteredMovies(filterDuration(movies));
       } else {
         setIsFilteredMovies(movies);
-      } 
-    }
-    else {
-  
+      }
+    } else {
     }
   }, []);
 
-  
- useEffect(() => {
-    if (localStorage.getItem('shortMovies') === 'true') {
+  useEffect(() => {
+    if (localStorage.getItem("shortMovies") === "true") {
       setIsShortMovies(true);
     } else {
       setIsShortMovies(false);
     }
   }, []);
-
-
-
-
-
 
   return (
     <main className="movies">
@@ -125,17 +109,14 @@ function Movies({ handleCardSaved, getFilms, savedMovies, handleCardDelete }) {
         onSearchMovies={onSearchMovies}
         onFilter={handleShortMovies}
         isShortMovies={isShortMovies}
-
-    savedMovies={savedMovies}
+        savedMovies={savedMovies}
       />
       <div className="movies-cards">
         <MoviesCardList
- // movie={movie}
-   movies={isFilteredMovies}
-   setIsNotFound={setIsNotFound}
-   isNotFound={isNotFound}
 
-
+          movies={isFilteredMovies}
+          setIsNotFound={setIsNotFound}
+          isNotFound={isNotFound}
           handleCardSaved={handleCardSaved}
           savedMovies={savedMovies}
           isLoading={isLoading}
