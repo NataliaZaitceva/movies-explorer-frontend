@@ -11,7 +11,7 @@ function Register({ onRegister }) {
 
   const {
     register,
-    formState: { errors },
+    formState: { errors, isValid },
     handleSubmit, reset
   } = useForm({
     mode: "onBlur"
@@ -46,10 +46,20 @@ function Register({ onRegister }) {
         </label>
         <input
           {...register("name", { required: "Поле обязательно к заполнению",
+        pattern: {
+          value: /^[a-zA-Zа-яА-Я\s]+$/,  
+        message: "Имя пользователя может содержать только буквы"},
         minLength: {
           value: 2,
           message: "Минимум 2 символа"
-        }})}
+        },
+        maxLength: {
+          value: 30,
+          message: "Минимум 30 символов"
+        },
+
+
+      })}
           className="register__input"
           value={name}
           onChange={handleNameChange}
@@ -70,10 +80,6 @@ function Register({ onRegister }) {
 
         <input
           {...register("email", { required: "Поле обязательно к заполнению",
-    
-        type: {
-         type: email, 
-         message: "Неверный формат почты"}
          
         })}
           className="register__input"
@@ -97,6 +103,7 @@ function Register({ onRegister }) {
           {...register("password", { required: true })}
           className="register__input"
           value={password}
+          type={password}
           onChange={handlePasswordChange}
         ></input>
        <div >
@@ -108,7 +115,7 @@ function Register({ onRegister }) {
      )}
    </div>
 
-        <button type="submit" className="register__button">
+        <button type="submit" className={isValid ? "register__button" : "register__button_disabled"}>
           Зарегистрироваться
         </button>
       </form>

@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import MoviesCardList from "../Movies/MoviesCardList";
 import SearchForm from "../Movies/SearchForm";
 import { filterDuration, filterMovies } from "../../utils/constants";
 function SavedMovies({  savedMovies, handleCardSaved, handleCardDelete}) {
   const [searchRequest, setSearchRequest] = useState('');
-  const [filteredMovies, setFilteredMovies] = useState(savedMovies); 
+  const [isFilteredMovies, setIsFilteredMovies] = useState(savedMovies); 
   const [isShortMovies, setIsShortMovies] = useState(false); 
   const [isNotFound, setIsNotFound] = useState(false); 
 
@@ -17,31 +17,24 @@ function SavedMovies({  savedMovies, handleCardSaved, handleCardDelete}) {
     setIsShortMovies(!isShortMovies);
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     const moviesList = filterMovies(savedMovies, searchRequest);
-    setFilteredMovies(isShortMovies ? filterDuration(moviesList) : moviesList);
+    setIsFilteredMovies(isShortMovies ? filterDuration(moviesList) : moviesList);
   }, [savedMovies, isShortMovies, searchRequest]);
 
-useEffect(() => {
-    if (filteredMovies.length === 0) {
+React.useEffect(() => {
+    if (isFilteredMovies.length === 0) {
       setIsNotFound(true);
     } else {
       setIsNotFound(false);
     }
-  }, [filteredMovies]);
+  }, [isFilteredMovies]);
 
-/*useEffect(() => {
-    if (savedMovies.length === 0) {
-      setIsNotFound(true);
-    } else {
-      setIsNotFound(false);
-    }
-  }, [savedMovies]);*/
 
   return (
     <main>
       <SearchForm onSearchMovies={onSearchMovies} onFilter={handleShortMovies}/>
-      <MoviesCardList savedMovies={savedMovies} movies={filteredMovies} handleCardSaved={handleCardSaved} isSavedFilm={true} handleCardDelete={handleCardDelete}/>
+      <MoviesCardList savedMovies={savedMovies} movies={isFilteredMovies} handleCardSaved={handleCardSaved} handleCardDelete={handleCardDelete}/>
     </main>
   );
 }

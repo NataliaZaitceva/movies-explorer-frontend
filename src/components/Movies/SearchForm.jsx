@@ -7,8 +7,8 @@ import { Routes, Route, useLocation, } from "react-router-dom";
 
 function SearchForm({ onSearchMovies, onFilter, isShortMovies }) {
 
-  const [isRequestError, setIsRequestError] = useState(false);
  const [request, setRequest] = useState("");
+
 const location = useLocation()
 
 const {
@@ -17,39 +17,32 @@ const {
   handleSubmit, reset
 } = useForm({
   mode: "onBlur",
-});
+}, { });
 
 const onSubmit = (data) => {
   onSearchMovies(request);
   reset()
 };
 
-/*function handleSearch() {
-  
-  if (request.length === 0) {
-    console.log ('тут пустой запрос')
-  } else {
-
-    onSearchMovies(request);
-     console.log ('must be a card')
-  }
- 
-}*/
 
 
 function handleChangeRequest(e) {
   setRequest(e.target.value);
 }
 
+
+ 
+
 const Line = `${
   window.location.pathname === '/movies' ? "search-form__line" : "search-form__line-shadow"
 }`
   
+
  return (
 
   
     <section className="search-form">
-      <form onSubmit={handleSubmit(onSubmit)} action="" className="search-form__form" >
+      <form  onSubmit={handleSubmit(onSubmit)} action="" className="search-form__form" >
         <label htmlFor="search" />
         <input
          {...register("search",        
@@ -62,6 +55,7 @@ const Line = `${
           className="search-form__input"
           placeholder="Фильм"
           name="search"
+          id='search-form__input'
           onChange={handleChangeRequest}
    
         ></input>

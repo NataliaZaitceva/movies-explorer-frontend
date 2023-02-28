@@ -5,6 +5,7 @@ import MoreButton from "./MoreButton";
 import Preloader from "./Preloader";
 import { useState, useEffect } from "react";
 
+
 function MoviesCardList({
   movies,
   isLoading,
@@ -12,21 +13,23 @@ function MoviesCardList({
   handleCardDelete,
   savedMovies,
   isNotFound,
-isRequestError
+
 }) {
 
 
-  const [shownMovies, setShownMovies] = useState([]);
+  const [shownFilms, setShownFilms] = useState([]);
 
+
+  
   function shownFilmsByRequest() {
-    if (window.innerWidth === 1280) {
-      setShownMovies(12);
+    if (window.innerWidth > 1200) {
+      setShownFilms(12);
     } else if (window.innerWidth < 1200) {
-      setShownMovies(8);
+      setShownFilms(8);
     } else if (window.innerWidth < 769) {
-      setShownMovies(8);
+      setShownFilms(8);
     } else if (window.innerWidth < 500) {
-      setShownMovies(5);
+      setShownFilms(5);
     }
   }
 
@@ -34,19 +37,19 @@ isRequestError
     shownFilmsByRequest();
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setTimeout(() => {
       window.addEventListener("resize", shownFilmsByRequest);
-    }, 700);
+    }, 768);
   });
 
   function shownMoreFilms() {
     if (window.innerWidth > 1180) {
-      setShownMovies(shownMovies + 3);
+      setShownFilms(shownFilms + 3);
     } else if (window.innerWidth > 1023) {
-      setShownMovies(shownMovies + 3);
+      setShownFilms(shownFilms + 3);
     } else if (window.innerWidth < 1023) {
-      setShownMovies(shownMovies + 2);
+      setShownFilms(shownFilms + 2);
     }
   }
 
@@ -60,7 +63,6 @@ isRequestError
       {isLoading && <Preloader />}
 
 {!isLoading && isNotFound && <div className="cards-list__notice">Ничего не найдено</div>}
-{!isLoading && isRequestError && <div className="cards-list__notice">Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз</div>}  
       {!isLoading && !isNotFound && (
         <>
           {window.location.pathname === "/saved-movies" ? (
@@ -82,7 +84,7 @@ isRequestError
           ) : (
             <>
               <ul className="cards-list">
-                {movies.slice(0, shownMovies).map((movie) => (
+                {movies.slice(0, shownFilms).map((movie) => (
                   <MoviesCard
                     key={movie.id || movie._id}
                     movie={movie}
@@ -95,7 +97,7 @@ isRequestError
                 ))}
               </ul>
               <>
-                {movies.length > shownMovies ? (
+                {movies.length > shownFilms ? (
                   <MoreButton onClick={shownMoreFilms} />
                 ) : (
                   ""

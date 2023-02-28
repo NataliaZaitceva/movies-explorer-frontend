@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import SearchForm from "./SearchForm";
 import MoviesCardList from "./MoviesCardList";
 import "./Movies.css";
-
+import * as movieApi from '../../utils/MovieApi'
 import { filterDuration, filterMovies } from "../../utils/constants";
 
 
@@ -14,21 +14,19 @@ function Movies({ handleCardSaved, getFilms, savedMovies, handleCardDelete }) {
 
   const [isShortMovies, setIsShortMovies] = useState(false);
 
-  const [isRequestError, setIsRequestError] = useState(false); //ошибка запроса к серверу
   const [isNotFound, setIsNotFound] = useState(false); //фильмы по запросу не найдены
 
+  const [isFilm, setIsFilm] = useState({})
 
 
-  function handleFilter(movies, request, shortMovie) { 
-    const moviesList = filterMovies(movies, request, shortMovie);
+  function handleFilter(movies, request, isShortMovies) { 
+    const moviesList = filterMovies(movies, request, isShortMovies);
     setInitialMovies(moviesList);
     console.log(moviesList.length);
-    setIsFilteredMovies(shortMovie ? filterDuration(moviesList) : moviesList);
+    setIsFilteredMovies(isShortMovies ? filterDuration(moviesList) : moviesList);
     localStorage.setItem("movies", JSON.stringify(moviesList));
     localStorage.setItem("allFindedMovies", JSON.stringify(movies));
   }
-
-
 
 
   function onSearchMovies(request) {
@@ -41,12 +39,24 @@ function Movies({ handleCardSaved, getFilms, savedMovies, handleCardDelete }) {
       const movies = JSON.parse(localStorage.getItem("allFindedMovies"));
    
       handleFilter(movies, request, isShortMovies);
-      getFilms()
     } else {
-      setIsNotFound(true);
+
+      movieApi
+        .getMovies()
+        .then((cardsData) => {
+          handleFilter(cardsData, request, isShortMovies);
+          setIsFilm(cardsData);
+          console.log("загрузка фильмов");
+          console.log(cardsData)
+        })
+        .catch((err) => {
+          setIsNotFound(true)
+          console.log(err);
+        })
+
+    }
+  }
   
-  }
-  }
 
   useEffect(() => {
     if (localStorage.getItem('movieSearch')) {
@@ -124,8 +134,8 @@ function Movies({ handleCardSaved, getFilms, savedMovies, handleCardDelete }) {
    movies={isFilteredMovies}
    setIsNotFound={setIsNotFound}
    isNotFound={isNotFound}
-setIRequestError={setIsRequestError}
-isRequestError={isRequestError}
+
+
           handleCardSaved={handleCardSaved}
           savedMovies={savedMovies}
           isLoading={isLoading}

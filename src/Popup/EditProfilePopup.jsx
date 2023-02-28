@@ -49,13 +49,23 @@ function EditProfilePopup(props) {
       onSubmit={handleSubmit(onSubmit)}
       button="Сохранить"
     >
-      <label htmlFor="name">
+      <label htmlFor="name">   </label>
         <input
                {...register("name",        
                {
-                   required: "Поле обязательно к заполнению",
-                  
-                 },
+                required: "Поле обязательно к заполнению",
+                pattern: {
+                 value: /^[a-zA-Zа-яА-Я\s]+$/,  
+               message: "Имя пользователя может содержать только буквы"},
+               minLength: {
+                value: 2,
+                message: "Минимум 2 символа"
+              },
+              maxLength: {
+                value: 30,
+                message: "Минимум 30 символов"
+              },
+              },
                  
                  )}
           name="name"
@@ -67,44 +77,42 @@ function EditProfilePopup(props) {
           maxLength={40}
           defaultValue={currentUser.name}
           placeholder="Имя"
-          required=""
           onChange={handleNameChange}
         />
 <div >
      
-     {errors?.email && (
+     {errors?.name && (
        <span className="popup__form-error">
          {errors?.name?.message || "Error!"}
        </span>
      )}
    </div>   
 
-      </label>
-      <label htmlFor="email">
+   
+
+      <label htmlFor="email">   </label>
         <input
 
 {...register("email",        
 {
-    required: "Поле обязательно к заполнению",
- pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-
-  },
-
+    required: true,    
+   type: "uniqueEmail",
+    message: "Этот адрес уже используется"
+   },
   
   )}
           name="email"
           type="text"
           id="email"
           className="popup__input popup__input-email"
-          value={email ?? ""}
+        //  value={email ?? ""}
           defaultValue={currentUser.email}
           minLength={2}
           maxLength={200}
           placeholder="Email"
-          required=""
           onChange={handleEmailChange}
         />
-      </label>
+   
       <div >
      
      {errors?.email && (

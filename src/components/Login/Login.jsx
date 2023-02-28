@@ -9,9 +9,10 @@ function Login({ onLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  
   const {
     register,
-    formState: { errors },
+    formState: { errors, isValid },
     handleSubmit, reset
   } = useForm({
     mode: "onBlur",
@@ -28,7 +29,11 @@ function Login({ onLogin }) {
 
   function handlePasswordChange(e) {
     setPassword(e.target.value);
+
   }
+
+
+
   return (
     <section className="login">
       <div className="login__header">
@@ -70,7 +75,7 @@ function Login({ onLogin }) {
           name="password"
           type="password"
           onChange={handlePasswordChange}
-
+          
         ></input>
 
 <div >
@@ -81,7 +86,7 @@ function Login({ onLogin }) {
        </span>
      )}
    </div>
-        <button type="submit" className="login__button">
+        <button type="submit" className={isValid ? "login__button" : ".login__button_disabled"}>
           Войти
         </button>
       </form>
