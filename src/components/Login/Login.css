@@ -14,6 +14,7 @@
 
 .login__header-logo {
   margin: 70px auto 0 0;
+  cursor: pointer;
 }
 
 .login__header-title {

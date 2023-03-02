@@ -32,12 +32,16 @@ function Login({ onLogin }) {
 
   }
 
+  function openMain() {
+    window.open("/",  "_self");
+  
+  }
 
 
   return (
     <section className="login">
       <div className="login__header">
-        <img className="login__header-logo" src={logo} alt="лого"></img>
+        <img className="login__header-logo" src={logo} alt="лого" onClick={openMain}></img>
         <h2 className="login__header-title">Рады видеть!</h2>
       </div>
       <form className="login__form" onSubmit={handleSubmit(onSubmit)}>

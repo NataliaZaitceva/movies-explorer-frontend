@@ -34,10 +34,15 @@ function Register({ onRegister }) {
     reset()
   }
 
+    function openMain() {
+    window.open("/",  "_self");
+    
+  }
+
   return (
     <section className="register">
       <div className="register__header">
-        <img className="register__header-logo" src={logo} alt="лого"></img>
+        <img className="register__header-logo" src={logo} alt="лого" onClick={openMain}></img>
         <h2 className="register__header-title">Добро пожаловать!</h2>
       </div>
       <form className="register__form" onSubmit={handleSubmit(onSubmit)}>

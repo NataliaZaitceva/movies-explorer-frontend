@@ -15,7 +15,6 @@ function Header({isLoggedIn}) {
 
   function openMain() {
     window.open("/");
-    
   }
 
   return (
@@ -25,7 +24,7 @@ function Header({isLoggedIn}) {
         element={
           <>
             <header className="header header-main">
-              <img className="logo" src={logo} alt="Лого" />
+              <img className="logo" src={logo} alt="Лого"/>
 
               
 { isLoggedIn ? ( 
