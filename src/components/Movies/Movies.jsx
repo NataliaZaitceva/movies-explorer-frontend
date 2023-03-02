@@ -20,13 +20,18 @@ function Movies({ handleCardSaved, getFilms, savedMovies, handleCardDelete }) {
   function handleFilter(movies, request, isShortMovies) {
     const moviesList = filterMovies(movies, request, isShortMovies);
     setInitialMovies(moviesList);
+ 
     console.log(moviesList.length);
+    console.log(request)
     setIsFilteredMovies(
       isShortMovies ? filterDuration(moviesList) : moviesList
     );
     localStorage.setItem("movies", JSON.stringify(moviesList));
     localStorage.setItem("allFindedMovies", JSON.stringify(movies));
+    localStorage.setItem("movieSearch", JSON.stringify(request));
   }
+
+
 
   function onSearchMovies(request) {
     console.log("отправляем запрос");
@@ -35,9 +40,11 @@ function Movies({ handleCardSaved, getFilms, savedMovies, handleCardDelete }) {
     localStorage.setItem("shortMovies", isShortMovies);
     if (localStorage.getItem("allFindedMovies")) {
       const movies = JSON.parse(localStorage.getItem("allFindedMovies"));
-
-      handleFilter(movies, request, isShortMovies);
-    } else {
+      handleFilter(movies,  request,  isShortMovies);
+    } 
+    
+    else {
+      setIsLoading(true)
       movieApi
         .getMovies()
         .then((cardsData) => {
@@ -48,16 +55,21 @@ function Movies({ handleCardSaved, getFilms, savedMovies, handleCardDelete }) {
         })
         .catch((err) => {
           setIsNotFound(true);
+        
           console.log(err);
-        });
+        })
+        .finally (() => {
+          setIsLoading(false)
+        }) 
+
     }
   }
+
 
   useEffect(() => {
     if (localStorage.getItem("movieSearch")) {
       if (isFilteredMovies.length === 0) {
         setIsNotFound(true);
-        console.log("nothing");
       } else {
         setIsNotFound(false);
       }
@@ -65,6 +77,7 @@ function Movies({ handleCardSaved, getFilms, savedMovies, handleCardDelete }) {
       setIsNotFound(false);
     }
   }, [isFilteredMovies]);
+
 
   function handleShortMovies() {
     setIsShortMovies(!isShortMovies);
@@ -80,6 +93,8 @@ function Movies({ handleCardSaved, getFilms, savedMovies, handleCardDelete }) {
     }
     localStorage.setItem("shortMovies", !isShortMovies);
   }
+
+
 
   useEffect(() => {
     if (localStorage.getItem("movies")) {
@@ -102,6 +117,9 @@ function Movies({ handleCardSaved, getFilms, savedMovies, handleCardDelete }) {
       setIsShortMovies(false);
     }
   }, []);
+
+  
+
 
   return (
     <main className="movies">

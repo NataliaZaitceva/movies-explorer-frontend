@@ -14,14 +14,13 @@ const location = useLocation()
 const {
   register,
   formState: { errors },
-  handleSubmit, reset
+  handleSubmit
 } = useForm({
   mode: "onBlur",
 }, { });
 
 const onSubmit = (data) => {
   onSearchMovies(request);
-  reset()
 };
 
 
