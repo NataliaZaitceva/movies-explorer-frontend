@@ -109,7 +109,8 @@ function Register({ onRegister }) {
           {...register("password", { required: true })}
           className="register__input"
           value={password}
-          type={password}
+          type="password"
+          name="password"
           onChange={handlePasswordChange}
         ></input>
        <div >
