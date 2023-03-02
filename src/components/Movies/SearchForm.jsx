@@ -7,9 +7,9 @@ import { Routes, Route, useLocation, } from "react-router-dom";
 
 function SearchForm({ onSearchMovies, onFilter, isShortMovies }) {
 
- const [request, setRequest] = useState("");
+ const [request, setRequest] = useState('');
 
-const location = useLocation()
+
 
 const {
   register,
@@ -30,7 +30,12 @@ function handleChangeRequest(e) {
 }
 
 
- 
+useEffect(() => {
+  if ( window.location.pathname === '/movies' && localStorage.getItem('movieSearch')) {
+    const usersRequest = localStorage.getItem('movieSearch');
+    setRequest(usersRequest);
+  }
+}, []);
 
 const Line = `${
   window.location.pathname === '/movies' ? "search-form__line" : "search-form__line-shadow"
@@ -41,7 +46,7 @@ const Line = `${
 
   
     <section className="search-form">
-      <form  onSubmit={handleSubmit(onSubmit)} action="" className="search-form__form" >
+      <form  onSubmit={handleSubmit(onSubmit)}  className="search-form__form" >
         <label htmlFor="search" />
         <input
          {...register("search",        
@@ -56,8 +61,9 @@ const Line = `${
           name="search"
           id='search-form__input'
           onChange={handleChangeRequest}
-   
+     value={request || ''}
         ></input>
+        
      {errors?.search && (
        <span className="search__form-error">
          {errors?.search?.message || "Error!"}

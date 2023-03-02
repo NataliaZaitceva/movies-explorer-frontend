@@ -28,7 +28,7 @@ function Movies({ handleCardSaved, getFilms, savedMovies, handleCardDelete }) {
     );
     localStorage.setItem("movies", JSON.stringify(moviesList));
     localStorage.setItem("allFindedMovies", JSON.stringify(movies));
-    localStorage.setItem("movieSearch", JSON.stringify(request));
+   // localStorage.setItem("movieSearch", JSON.stringify(request));
   }
 
 
