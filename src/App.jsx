@@ -47,9 +47,9 @@ function App() {
   function handleRegister({ name, email, password }) {
     auth
       .register(name, email, password)
-      .then((user) => {
-        handleLogin({ email, password });
-        setCurrentUser(user);
+      .then(() => {
+        handleLogin({ name, email, password, });
+        setCurrentUser(name, email);
       })
       .catch(() => {
         setDataInfoTool({
@@ -60,13 +60,13 @@ function App() {
       });
   }
 
-  function handleLogin({ email, password }) {
+  function handleLogin({ email, password, name }) {
     auth
-      .authorize(email, password)
+      .authorize(email, password, name)
       .then((res) => {
         if (res) {
           localStorage.setItem("jwt", res.token);
-
+          setCurrentUser({email, password, name});
           setIsLoggedIn(true);
           history("/movies");
         }
@@ -121,7 +121,7 @@ function App() {
         .getContent(jwt)
         .then((user) => {
           if (user) {
-            localStorage.removeItem("allMovies");
+          //  localStorage.removeItem("allMovies");
 
             setIsLoggedIn(true);
             history(path);
@@ -149,9 +149,9 @@ setSavedMovies(JSON.parse(usersMovies));
     const jwt = localStorage.getItem("jwt");
 
     if (jwt) {
-      auth.getInfo().then((data) => {
+      auth.getInfo().then((name, email) => {
         setIsLoggedIn(true);
-        setCurrentUser(data);
+        setCurrentUser(name, email);
         history(path);
       });
 
@@ -161,6 +161,9 @@ setSavedMovies(JSON.parse(usersMovies));
         .then(() => {
           const usersMovies = localStorage.getItem("savedMovies") || [];
           setSavedMovies(JSON.parse(usersMovies));
+
+          const userRequest = localStorage.getItem("movieSearch") || [];
+          setSavedMovies(JSON.parse(userRequest));
           //localStorage.setItem('savedMovies' )
           //console.log(localStorage.setItem('savedMovies')
 
@@ -190,7 +193,7 @@ setSavedMovies(JSON.parse(usersMovies));
         const newMovies = savedMovies.filter(
           (savedMovie) => savedMovie._id !== movie._id
         );
-        localStorage.removeItem("movie._id");
+//        localStorage.removeItem("movie._id");
 
         localStorage.setItem("savedMovies", JSON.stringify(newMovies));
 
@@ -232,9 +235,9 @@ setSavedMovies(JSON.parse(newUsersMovies));
     auth
       .setUserInfo(formData)
 
-      .then((name, email) => {
+      .then((formData) => {
         setIsEdit(true);
-        setCurrentUser(name, email);
+        setCurrentUser(formData);
         closePopup();
       })
       .catch((err) => console.log(err));
