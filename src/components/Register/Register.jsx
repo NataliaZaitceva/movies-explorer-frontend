@@ -34,9 +34,10 @@ function Register({ onRegister }) {
     reset()
   }
 
-    function openMain() {
+
+  function openMain() {
     window.open("/",  "_self");
-    
+  
   }
 
   return (
@@ -84,8 +85,8 @@ function Register({ onRegister }) {
         </label>
 
         <input
-          {...register("email", { required: "Поле обязательно к заполнению",
-         
+          {...register("email", {pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/},
+{required: "Поле обязательно к заполнению",
         })}
           className="register__input"
           value={email}
@@ -120,7 +121,7 @@ function Register({ onRegister }) {
      )}
    </div>
 
-        <button type="submit" className={isValid ? "register__button" : "register__button_disabled"}>
+        <button type="submit" className={isValid ? "register__button" : "register__button:disabled"}>
           Зарегистрироваться
         </button>
       </form>
