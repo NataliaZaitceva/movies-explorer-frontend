@@ -51,20 +51,13 @@ function EditProfilePopup(props) {
     >
       <label htmlFor="name">   </label>
         <input
-               {...register("name",        
+               {...register("name",      
                {
-                required: "Поле обязательно к заполнению",
+ 
                 pattern: {
                  value: /^[a-zA-Zа-яА-Я\s]+$/,  
                message: "Имя пользователя может содержать только буквы"},
-               minLength: {
-                value: 2,
-                message: "Минимум 2 символа"
-              },
-              maxLength: {
-                value: 30,
-                message: "Минимум 30 символов"
-              },
+          
               },
                  
                  )}
@@ -93,19 +86,18 @@ function EditProfilePopup(props) {
       <label htmlFor="email">   </label>
         <input
 
-{...register("email",        
-{
-    required: true,    
-   type: "uniqueEmail",
-    message: "Этот адрес уже используется"
-   },
+{...register("email", 
+{ type:
+ { value: 'uniqueEmail ',
+    message: "Этот адрес уже используется",
+   },}
   
   )}
           name="email"
-          type="text"
+          type="uniqueEmail"
           id="email"
           className="popup__input popup__input-email"
-        //  value={email ?? ""}
+      value={email ?? ""}
           defaultValue={currentUser.email}
           minLength={2}
           maxLength={200}

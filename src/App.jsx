@@ -161,9 +161,6 @@ setSavedMovies(JSON.parse(usersMovies));
         .then(() => {
           const usersMovies = localStorage.getItem("savedMovies") || [];
           setSavedMovies(JSON.parse(usersMovies));
-
-          const userRequest = localStorage.getItem("movieSearch") || [];
-          setSavedMovies(JSON.parse(userRequest));
           //localStorage.setItem('savedMovies' )
           //console.log(localStorage.setItem('savedMovies')
 
@@ -232,6 +229,7 @@ setSavedMovies(JSON.parse(newUsersMovies));
   }
 
   function handleUpdateUser(formData) {
+  
     auth
       .setUserInfo(formData)
 
@@ -240,7 +238,11 @@ setSavedMovies(JSON.parse(newUsersMovies));
         setCurrentUser(formData);
         closePopup();
       })
-      .catch((err) => console.log(err));
+      .catch((email) => {
+        if (email.length > 0) {
+       alert("Уже используется")
+      }
+    })
   }
 
   function handleEditProfileClick() {
