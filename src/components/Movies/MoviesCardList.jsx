@@ -4,7 +4,7 @@ import "./MoviesCardList.css";
 import MoreButton from "./MoreButton";
 import Preloader from "./Preloader";
 import { useState, useEffect } from "react";
-
+import { DESKTOP, TABLET, MOBILE, DESKTOP_MORE_FIlMS, TABLET_MORE_FIlMS, MOBILE_MORE_FIlMS } from "../../utils/constants";
 
 function MoviesCardList({
   movies,
@@ -16,19 +16,17 @@ function MoviesCardList({
 
 }) {
 
-
   const [shownFilms, setShownFilms] = useState([]);
-
 
   
   function shownFilmsByRequest() {
-    if (window.innerWidth > 1200) {
+    if (window.innerWidth > DESKTOP) {
       setShownFilms(12);
-    } else if (window.innerWidth < 1200) {
+    } else if (window.innerWidth < DESKTOP) {
       setShownFilms(8);
-    } else if (window.innerWidth < 769) {
+    } else if (window.innerWidth < TABLET) {
       setShownFilms(8);
-    } else if (window.innerWidth < 500) {
+    } else if (window.innerWidth < MOBILE) {
       setShownFilms(5);
     }
   }
@@ -44,12 +42,12 @@ function MoviesCardList({
   });
 
   function shownMoreFilms() {
-    if (window.innerWidth > 1180) {
-      setShownFilms(shownFilms + 3);
-    } else if (window.innerWidth > 1023) {
-      setShownFilms(shownFilms + 3);
-    } else if (window.innerWidth < 1023) {
-      setShownFilms(shownFilms + 2);
+    if (window.innerWidth === DESKTOP) {
+      setShownFilms(shownFilms + DESKTOP_MORE_FIlMS);
+    } else if (window.innerWidth > TABLET) {
+      setShownFilms(shownFilms + TABLET_MORE_FIlMS);
+    } else if (window.innerWidth < MOBILE) {
+      setShownFilms(shownFilms + MOBILE_MORE_FIlMS);
     }
   }
 
