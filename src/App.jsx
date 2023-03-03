@@ -29,9 +29,8 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const [dataInfoTool, setDataInfoTool] = useState({ text: "", image: "" });
-
   const [savedMovies, setSavedMovies] = useState([]);
-
+  const [listMovies, setListMovies] = useState([])
   const [isEdit, setIsEdit] = useState(false);
 
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -61,6 +60,8 @@ function App() {
   }
 
   function handleLogin({ email, password, name }) {
+
+
     auth
       .authorize(email, password, name)
       .then((res) => {
@@ -112,13 +113,18 @@ function App() {
 
   React.useEffect(() => {
 
+    const tokenCheck = () => {
+      if (!localStorage.getItem("jwt")) {
+        history("/");
+        return;
+      }
       const jwt = localStorage.getItem("jwt");
 
       auth
         .getContent(jwt)
         .then((user) => {
           if (user) {
-          //  localStorage.removeItem("allMovies");
+        localStorage.removeItem("allMovies");
    // setSavedMovies('savedMovies')
             setIsLoggedIn(true);
             history(path);
@@ -128,7 +134,8 @@ function App() {
           setIsLoggedIn(false);
           console.log(err);
         });
-
+      };
+      tokenCheck();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -142,35 +149,31 @@ setSavedMovies(JSON.parse(usersMovies));
 }, [])*/
 
   React.useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
-
-    if (jwt) {
+    if (isLoggedIn){
       auth
-      .getInfo(jwt)
+      .getInfo()
       
       .then((name, email) => {
         setIsLoggedIn(true);
         setCurrentUser(name, email);
         history(path);
-      });}
- if (isLoggedIn) {
-      auth
-        .getCards(isLoggedIn)
+      });
 
-        .then(() => {
-          const usersMovies = localStorage.getItem("savedMovies") || [];
-          setSavedMovies(JSON.parse(usersMovies));
+      auth
+        .getCards()
+
+        .then((res) => {
+        //  const usersMovies = localStorage.getItem("savedMovies") || [];
+         // setSavedMovies(JSON.parse(usersMovies));
 console.log('карточки');
           //localStorage.setItem('savedMovies' )
           //console.log(localStorage.setItem('savedMovies')
 
-          //setSavedMovies(usersMovies)
+         setSavedMovies(res)
           //setUsersList(usersMovies)
           
-        })
-        
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        });
+      }
   }, [isLoggedIn]);
 
   /*React.useEffect(() => {
@@ -216,11 +219,15 @@ setSavedMovies(JSON.parse(newUsersMovies));
 }, [])*/
 
   function signOut() {
-    localStorage.removeItem('jwt');
-   /* localStorage.removeItem('movieSearch');
-   localStorage.removeItem('savedMovies')*/
     setIsLoggedIn(false);
 
+   //setCurrentUser({})
+    localStorage.removeItem('jwt');
+    //localStorage.removeItem('savedMovies');
+    localStorage.removeItem('movieSearch')
+    localStorage.removeItem('allFindedMovies') 
+    localStorage.removeItem('movies') 
+    setListMovies([])
     history("/");
   }
 
