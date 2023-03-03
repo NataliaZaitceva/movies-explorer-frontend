@@ -27,7 +27,7 @@ function MoviesCard({
   const cardSaveButton = `${saved ? "card__button-active" : "card__button"}`;
 
   return (
-    <li className="card" key={movie.id || movie._id}>
+    <li className="card"zz>
       <div className="card__header" key={movie.header}>
         <h3 className="card__header-title" key={movie.nameRU}>
           {movie.nameRU}

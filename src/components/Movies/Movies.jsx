@@ -38,6 +38,7 @@ function Movies({ handleCardSaved, getFilms, savedMovies, handleCardDelete }) {
     console.log(request);
     localStorage.setItem("movieSearch", request);
     localStorage.setItem("shortMovies", isShortMovies);
+    //localStorage.setItem('savedMovies', savedMovies)
     if (localStorage.getItem("allFindedMovies")) {
       const movies = JSON.parse(localStorage.getItem("allFindedMovies"));
       handleFilter(movies,  request,  isShortMovies);
@@ -55,7 +56,7 @@ function Movies({ handleCardSaved, getFilms, savedMovies, handleCardDelete }) {
         })
         .catch((err) => {
           setIsNotFound(true);
-        
+   
           console.log(err);
         })
         .finally (() => {
@@ -119,8 +120,6 @@ function Movies({ handleCardSaved, getFilms, savedMovies, handleCardDelete }) {
   }, []);
 
   
-
-
   return (
     <main className="movies">
       <SearchForm

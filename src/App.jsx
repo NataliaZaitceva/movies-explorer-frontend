@@ -83,12 +83,13 @@ function App() {
 
   function handleCardSaved(movieData) {
     auth
-      .createMovie(movieData)
+      .createMovie( movieData)
       .then((newMovie) => {
-        const newFilm = [...savedMovies, newMovie];
+        const newFilms = [...savedMovies, newMovie];
 
-        localStorage.setItem("savedMovies", JSON.stringify(newFilm));
+        localStorage.setItem("savedMovies", JSON.stringify(newFilms));
         setSavedMovies((savedMovies) => [...savedMovies, newMovie]);
+
         console.log(movieData);
         console.log(newMovie);
         setDataInfoTool({
@@ -110,11 +111,7 @@ function App() {
   }
 
   React.useEffect(() => {
-    const tokenCheck = () => {
-      if (!localStorage.getItem("jwt")) {
-        history("/");
-        return;
-      }
+
       const jwt = localStorage.getItem("jwt");
 
       auth
@@ -122,7 +119,7 @@ function App() {
         .then((user) => {
           if (user) {
           //  localStorage.removeItem("allMovies");
-
+   // setSavedMovies('savedMovies')
             setIsLoggedIn(true);
             history(path);
           }
@@ -131,8 +128,7 @@ function App() {
           setIsLoggedIn(false);
           console.log(err);
         });
-    };
-    tokenCheck();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -149,31 +145,33 @@ setSavedMovies(JSON.parse(usersMovies));
     const jwt = localStorage.getItem("jwt");
 
     if (jwt) {
-      auth.getInfo().then((name, email) => {
+      auth
+      .getInfo(jwt)
+      
+      .then((name, email) => {
         setIsLoggedIn(true);
         setCurrentUser(name, email);
         history(path);
-      });
-
+      });}
+ if (isLoggedIn) {
       auth
-        .getCards()
+        .getCards(isLoggedIn)
 
         .then(() => {
           const usersMovies = localStorage.getItem("savedMovies") || [];
           setSavedMovies(JSON.parse(usersMovies));
+console.log('карточки');
           //localStorage.setItem('savedMovies' )
           //console.log(localStorage.setItem('savedMovies')
 
           //setSavedMovies(usersMovies)
           //setUsersList(usersMovies)
-          console.log(usersMovies);
+          
         })
-        .catch((err) => {
-          console.log("ошибка получения списка карточек");
-        });
+        
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isLoggedIn]);
 
   /*React.useEffect(() => {
     if (localStorage.removeItem('movie._id')) {
@@ -218,8 +216,11 @@ setSavedMovies(JSON.parse(newUsersMovies));
 }, [])*/
 
   function signOut() {
-    localStorage.clear();
+    localStorage.removeItem('jwt');
+   /* localStorage.removeItem('movieSearch');
+   localStorage.removeItem('savedMovies')*/
     setIsLoggedIn(false);
+
     history("/");
   }
 
