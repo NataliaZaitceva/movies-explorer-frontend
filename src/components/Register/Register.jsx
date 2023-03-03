@@ -122,7 +122,7 @@ function Register({ onRegister }) {
      )}
    </div>
 
-        <button type="submit" className={isValid ? "register__button" : "register__button:disabled"}>
+        <button type="submit" className={isValid ? "register__button" : "register__button_disabled"}>
           Зарегистрироваться
         </button>
       </form>

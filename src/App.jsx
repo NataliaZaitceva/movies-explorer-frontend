@@ -59,15 +59,15 @@ function App() {
       });
   }
 
-  function handleLogin({ email, password, name }) {
+  function handleLogin({ email, password}) {
 
 
     auth
-      .authorize(email, password, name)
+      .authorize(email, password)
       .then((res) => {
         if (res) {
           localStorage.setItem("jwt", res.token);
-          setCurrentUser({email, password, name});
+          setCurrentUser({email, password});
           setIsLoggedIn(true);
           history("/movies");
         }
@@ -83,7 +83,8 @@ function App() {
   }
 
   function handleCardSaved(movieData) {
-    auth
+ 
+   auth
       .createMovie( movieData)
       .then((newMovie) => {
         const newFilms = [...savedMovies, newMovie];
@@ -110,6 +111,7 @@ function App() {
         handleInfoTooltipOpen();
       });
   }
+
 
   React.useEffect(() => {
 
@@ -166,10 +168,7 @@ setSavedMovies(JSON.parse(usersMovies));
         //  const usersMovies = localStorage.getItem("savedMovies") || [];
          // setSavedMovies(JSON.parse(usersMovies));
 console.log('карточки');
-          //localStorage.setItem('savedMovies' )
-          //console.log(localStorage.setItem('savedMovies')
-
-         setSavedMovies(res)
+           setSavedMovies(res)
           //setUsersList(usersMovies)
           
         });
@@ -220,8 +219,6 @@ setSavedMovies(JSON.parse(newUsersMovies));
 
   function signOut() {
     setIsLoggedIn(false);
-
-   //setCurrentUser({})
     localStorage.removeItem('jwt');
     //localStorage.removeItem('savedMovies');
     localStorage.removeItem('movieSearch')
@@ -309,10 +306,22 @@ setSavedMovies(JSON.parse(newUsersMovies));
             />
 
             <Route
-              path="signup"
-              element={<Register onRegister={handleRegister} />}
-            />
-            <Route path="signin" element={<Login onLogin={handleLogin} />} />
+              path="signup" element={
+                isLoggedIn ? (
+                  <Navigate to="/movies" />
+                ) : (
+                  <Register onRegister={handleRegister} />
+              )
+              }/>
+
+            <Route path="signin"  element={
+                isLoggedIn ? (
+                  <Navigate to="/movies" />
+                ) : (
+                  <Login onLogin={handleLogin}/>
+                )
+              }/>
+            
             <Route
               path="*"
               element={

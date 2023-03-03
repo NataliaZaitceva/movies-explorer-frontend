@@ -85,7 +85,7 @@ cursor: pointer;
   cursor: pointer;
 }
 
-.register__button:disabled {
+.register__button_disabled {
   background-color: gray;
   border: none;
   border-radius: 2px;

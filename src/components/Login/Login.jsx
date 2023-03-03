@@ -90,7 +90,7 @@ function Login({ onLogin }) {
        </span>
      )}
    </div>
-        <button type="submit" className={isValid ? "login__button" : ".login__button_disabled"}>
+        <button type="submit" className={isValid ? "login__button" : "login__button_disabled"}>
           Войти
         </button>
       </form>
