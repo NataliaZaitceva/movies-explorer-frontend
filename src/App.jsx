@@ -23,7 +23,7 @@ import fail from "./images/fail.svg";
 import InfoTooltip from "./components/InfoTooltip/InfoTooltip";
 import ProtectedRoute from "./components/ProtectedRoute";
 import EditProfilePopup from "./Popup/EditProfilePopup";
-
+import NotFound from "./components/NotFound/NotFound";
 function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -38,6 +38,8 @@ function App() {
   const location = useLocation();
   const history = useNavigate();
   const path = location;
+
+  const NoMatchPage = () => {return (<NotFound />)};
 
   function handleInfoTooltipOpen() {
     setIsInfoTooltipOpen(true);
@@ -304,7 +306,7 @@ setSavedMovies(JSON.parse(newUsersMovies));
                 </ProtectedRoute>
               }
             />
-
+ 
             <Route
               path="signup" element={
                 isLoggedIn ? (
@@ -321,7 +323,14 @@ setSavedMovies(JSON.parse(newUsersMovies));
                   <Login onLogin={handleLogin}/>
                 )
               }/>
-            
+            <Route path='*'
+              element={
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <NoMatchPage
+                  />
+                </ProtectedRoute>
+              }
+            /> 
             <Route
               path="*"
               element={
@@ -332,6 +341,7 @@ setSavedMovies(JSON.parse(newUsersMovies));
                 )
               }
             />
+  
           </Routes>
           <InfoTooltip
             isOpen={isInfoTooltipOpen}
@@ -344,6 +354,7 @@ setSavedMovies(JSON.parse(newUsersMovies));
             onClose={closePopup}
             onUpdateUser={handleUpdateUser}
           />
+        
         </div>
 
         <Footer />
