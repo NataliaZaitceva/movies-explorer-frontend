@@ -222,10 +222,11 @@ setSavedMovies(JSON.parse(newUsersMovies));
   function signOut() {
     setIsLoggedIn(false);
     localStorage.removeItem('jwt');
-    //localStorage.removeItem('savedMovies');
+    localStorage.removeItem('savedMovies');
     localStorage.removeItem('movieSearch')
     localStorage.removeItem('allFindedMovies') 
     localStorage.removeItem('movies') 
+    localStorage.removeItem('shortMovies')
     setListMovies([])
     history("/");
   }
