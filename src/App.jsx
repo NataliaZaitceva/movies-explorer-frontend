@@ -237,20 +237,26 @@ setSavedMovies(JSON.parse(newUsersMovies));
   }
 
   function handleUpdateUser(formData) {
-  
+    if (formData.name !== currentUser.name || formData.email !== currentUser.email)
     auth
       .setUserInfo(formData)
 
-      .then((formData) => {
-        setIsEdit(true);
-        setCurrentUser(formData);
+      .then((newFormData) => {
+        setIsEdit(false);
+        setCurrentUser(newFormData);
         closePopup();
+        alert("Данные успешно измененны")
       })
-      .catch((email) => {
+      .catch((email, newFormData) => {
         if (email.length > 0) {
-       alert("Уже используется")
+     setCurrentUser(false);
+       alert("Этот email используется другим пользователем")
       }
+  
     })
+    else {
+      alert("Данные уже используются вами")
+    }
   }
 
   function handleEditProfileClick() {

@@ -32,6 +32,7 @@ function Register({ onRegister }) {
   const firstName = register('name', {required:'Обязательное поле'}) 
   const userEmail = register('email', {required: 'Обязательное поле'}) 
   const userPassword = register('password', {required: 'Обязательное поле'}) 
+ 
   function handleNameChange(e) {
     e.preventDefault()
     setName(e.target.value);
