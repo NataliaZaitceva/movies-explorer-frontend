@@ -79,13 +79,18 @@ function Login({ onLogin }) {
    </div>   
         <label htmlFor="password" className="login__form-name">Пароль</label>
         <input
-         {...register("password", { required: "Поле обязательно к заполнению",
-        })}
+         {...register("password")}
           className="login__input"
           value={password}
           name="password"
           type="password"
-          onChange={handlePasswordChange}
+          {...userPassword}
+          onChange={(e) => {
+            userPassword.onChange(e);
+            handlePasswordChange(e);
+       }}
+       onBlur={userPassword.onBlur}
+       ref={userPassword.ref}
           
         ></input>
 

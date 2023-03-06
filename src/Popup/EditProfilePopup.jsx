@@ -37,6 +37,7 @@ function EditProfilePopup(props) {
       name,
       email
     });
+    alert("Данные успешно изменены")
     reset()
   }
 
