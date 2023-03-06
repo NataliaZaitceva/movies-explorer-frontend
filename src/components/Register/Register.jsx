@@ -14,23 +14,32 @@ function Register({ onRegister }) {
     formState: { errors, isValid },
     handleSubmit, reset
   } = useForm({
-    mode: "onBlur"
+    mode: "onChange"
   });
 
   function handleEmailChange(e) {
+
+       e.preventDefault()
     setEmail(e.target.value);
+
   }
 
   function handlePasswordChange(e) {
+    e.preventDefault()
     setPassword(e.target.value);
-  }
+  };
 
+  const firstName = register('name', {required:'Обязательное поле'}) 
+  const userEmail = register('email', {required: 'Обязательное поле'}) 
+  const userPassword = register('password', {required: 'Обязательное поле'}) 
   function handleNameChange(e) {
+    e.preventDefault()
     setName(e.target.value);
   }
 
  const onSubmit = (data) => {
     onRegister({ name, email, password });
+
     reset()
   }
 
@@ -51,7 +60,8 @@ function Register({ onRegister }) {
           Имя
         </label>
         <input
-          {...register("name", { required: "Поле обязательно к заполнению",
+          {...register("name", 
+      {    
         pattern: {
           value: /^[a-zA-Zа-яА-Я\s]+$/,  
         message: "Имя пользователя может содержать только буквы"},
@@ -63,19 +73,27 @@ function Register({ onRegister }) {
           value: 30,
           message: "Минимум 30 символов"
         },
+        
 
 
       })}
           className="register__input"
           value={name}
-          onChange={handleNameChange}
+          type="name"
+          {...firstName}
+          onChange={(e) => {
+            firstName.onChange(e);
+            handleNameChange(e);
+       }}
+       onBlur={firstName.onBlur}
+       ref={firstName.ref}
         ></input>
 
         <div >
      
           {errors?.name && (
             <span className="register__form-error">
-              {errors?.name?.message || "Error!"}
+              {errors?.name?.message}
             </span>
           )}
         </div>
@@ -85,19 +103,29 @@ function Register({ onRegister }) {
         </label>
 
         <input
-          {...register("email", {pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/},
-{required: "Поле обязательно к заполнению",
+          {...register("email",
+
+{
+pattern: {
+  value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 
+        message: "Неверный формат электронной почты"},
         })}
           className="register__input"
           value={email}
-          onChange={handleEmailChange}
+          {...userEmail}
+          onChange={(e) => {
+            userEmail.onChange(e);
+            handleEmailChange(e);
+       }}
+       onBlur={userEmail.onBlur}
+       ref={userEmail.ref}
         ></input>
 
 <div >
      
-     {errors?.name && (
+     {errors?.email && (
        <span className="register__form-error">
-         {errors?.email?.message || "Error!"}
+         {errors?.email?.message}
        </span>
      )}
    </div>
@@ -106,12 +134,17 @@ function Register({ onRegister }) {
           Пароль
         </label>
         <input
-          {...register("password", { required: true })}
           className="register__input"
           value={password}
           type="password"
           name="password"
-          onChange={handlePasswordChange}
+          {...userPassword}
+          onChange={(e) => {
+            userPassword.onChange(e);
+            handlePasswordChange(e);
+       }}
+       onBlur={userPassword.onBlur}
+       ref={userPassword.ref}
         ></input>
        <div >
      

@@ -15,7 +15,7 @@ function Login({ onLogin }) {
     formState: { errors, isValid },
     handleSubmit, reset
   } = useForm({
-    mode: "onBlur",
+    mode: "onChange",
   });
 
   const onSubmit = (data) => {
@@ -37,6 +37,8 @@ function Login({ onLogin }) {
   
   }
 
+  const userEmail = register('email', {required: 'Обязательное поле'}) 
+  const userPassword = register('password', {required: 'Обязательное поле'}) 
 
   return (
     <section className="login">
@@ -50,16 +52,21 @@ function Login({ onLogin }) {
         </label>
         <input
           {...register("email",        
-        {
-            required: "Поле обязательно к заполнению",
-           
-          },
-          
-          )}
+          {
+            pattern: {
+              value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 
+                    message: "Неверный формат электронной почты"},
+                    })}
           className="login__input"
           value={email}
           name="email"
-          onChange={handleEmailChange}
+          {...userEmail}
+          onChange={(e) => {
+            userEmail.onChange(e);
+            handleEmailChange(e);
+       }}
+       onBlur={userEmail.onBlur}
+       ref={userEmail.ref}
         ></input>
 
 <div >
