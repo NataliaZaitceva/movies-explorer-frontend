@@ -7,6 +7,8 @@ import {
   useLocation,
 } from "react-router-dom";
 
+
+import { useForm } from "react-hook-form";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import SavedMovies from "./components/SavedMovies/SavedMovies";
@@ -30,26 +32,26 @@ function App() {
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const [dataInfoTool, setDataInfoTool] = useState({ text: "", image: "" });
   const [savedMovies, setSavedMovies] = useState([]);
-  const [listMovies, setListMovies] = useState([])
-  const [isEdit, setIsEdit] = useState(false);
+  const [listMovies, setListMovies] = useState([]);
 
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
+
 
   const location = useLocation();
   const history = useNavigate();
   const path = location;
 
-  const NoMatchPage = () => {return (<NotFound />)};
-
   function handleInfoTooltipOpen() {
     setIsInfoTooltipOpen(true);
   }
+
+
 
   function handleRegister({ name, email, password }) {
     auth
       .register(name, email, password)
       .then(() => {
-        handleLogin({ name, email, password, });
+        handleLogin({ name, email, password });
         setCurrentUser(name, email);
       })
       .catch(() => {
@@ -61,15 +63,13 @@ function App() {
       });
   }
 
-  function handleLogin({ email, password}) {
-
-
+  function handleLogin({ email, password }) {
     auth
       .authorize(email, password)
       .then((res) => {
         if (res) {
           localStorage.setItem("jwt", res.token);
-          setCurrentUser({email, password});
+          setCurrentUser({ email, password });
           setIsLoggedIn(true);
           history("/movies");
         }
@@ -85,9 +85,8 @@ function App() {
   }
 
   function handleCardSaved(movieData) {
- 
-   auth
-      .createMovie( movieData)
+    auth
+      .createMovie(movieData)
       .then((newMovie) => {
         const newFilms = [...savedMovies, newMovie];
 
@@ -114,12 +113,10 @@ function App() {
       });
   }
 
-
   React.useEffect(() => {
-
     const tokenCheck = () => {
       if (!localStorage.getItem("jwt")) {
-        history("/");
+      //  history("/");
         return;
       }
       const jwt = localStorage.getItem("jwt");
@@ -128,8 +125,8 @@ function App() {
         .getContent(jwt)
         .then((user) => {
           if (user) {
-        localStorage.removeItem("allMovies");
-   // setSavedMovies('savedMovies')
+            localStorage.removeItem("allMovies");
+            // setSavedMovies('savedMovies')
             setIsLoggedIn(true);
             history(path);
           }
@@ -138,8 +135,8 @@ function App() {
           setIsLoggedIn(false);
           console.log(err);
         });
-      };
-      tokenCheck();
+    };
+    tokenCheck();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -153,28 +150,27 @@ setSavedMovies(JSON.parse(usersMovies));
 }, [])*/
 
   React.useEffect(() => {
-    if (isLoggedIn){
+    if (isLoggedIn) {
       auth
-      .getInfo()
-      
-      .then((name, email) => {
-        setIsLoggedIn(true);
-        setCurrentUser(name, email);
-        history(path);
-      });
+        .getInfo()
+
+        .then((name, email) => {
+          setIsLoggedIn(true);
+          setCurrentUser(name, email);
+          history(path);
+        });
 
       auth
         .getCards()
 
         .then((res) => {
-        //  const usersMovies = localStorage.getItem("savedMovies") || [];
-         // setSavedMovies(JSON.parse(usersMovies));
-console.log('карточки');
-           setSavedMovies(res)
+          //  const usersMovies = localStorage.getItem("savedMovies") || [];
+          // setSavedMovies(JSON.parse(usersMovies));
+          console.log("карточки");
+          setSavedMovies(res);
           //setUsersList(usersMovies)
-          
         });
-      }
+    }
   }, [isLoggedIn]);
 
   /*React.useEffect(() => {
@@ -192,7 +188,7 @@ console.log('карточки');
         const newMovies = savedMovies.filter(
           (savedMovie) => savedMovie._id !== movie._id
         );
-//        localStorage.removeItem("movie._id");
+        //        localStorage.removeItem("movie._id");
 
         localStorage.setItem("savedMovies", JSON.stringify(newMovies));
 
@@ -221,56 +217,81 @@ setSavedMovies(JSON.parse(newUsersMovies));
 
   function signOut() {
     setIsLoggedIn(false);
-    localStorage.removeItem('jwt');
-    localStorage.removeItem('savedMovies');
-    localStorage.removeItem('movieSearch')
-    localStorage.removeItem('allFindedMovies') 
-    localStorage.removeItem('movies') 
-    localStorage.removeItem('shortMovies')
-    setListMovies([])
+    localStorage.removeItem("jwt");
+    localStorage.removeItem("savedMovies");
+    localStorage.removeItem("movieSearch");
+    localStorage.removeItem("allFindedMovies");
+    localStorage.removeItem("movies");
+    localStorage.removeItem("shortMovies");
+    setListMovies([]);
     history("/");
   }
 
   function closePopup() {
     setIsInfoTooltipOpen(false);
     setIsEditProfilePopupOpen(false);
+
   }
 
-  function handleUpdateUser(formData) {
-    if (formData.name !== currentUser.name || formData.email !== currentUser.email)
-    auth
-      .setUserInfo(formData)
 
-      .then((newFormData) => {
-        setIsEdit(false);
-        setCurrentUser(newFormData);
-        closePopup();
-        alert("Данные успешно измененны")
-      })
-      .catch((email, newFormData) => {
-        if (email.length > 0) {
-     setCurrentUser(false);
-       alert("Этот email используется другим пользователем")
-      }
-  
-    })
+
+  function handleUpdateUser(formData) {
+    if (
+      formData.name !== currentUser.name ||
+      formData.email !== currentUser.email
+    )
+      auth
+        .setUserInfo(formData)
+        .then((newFormData) => {
+        setCurrentUser(newFormData); 
+        alert("Данные успешно обновлены")
+       
+          closePopup()
+        })
+        .catch((email) => {
+          if (email.length > 0) {
+            alert("Этот email используется другим пользователем");
+          } else {
+
+            alert ('Ошибка! Попробуйте снова')
+          }
+        });
     else {
-      alert("Данные уже используются вами")
+
+    alert("Вам нужно поменять данные пользователя, чтобы сохранить их");
+
     }
   }
 
+
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
+  
   }
+
+
+
+
 
   return (
     <>
       <CurrentUserContext.Provider value={currentUser}>
         <div className="page">
           <Header isLoggedIn={isLoggedIn} />
-
+            
           <Routes>
+          <Route
+              path="*"
+              element={
+                isLoggedIn ? (
+                  <NotFound/>
+                ) : (
+                  <NotFound />
+                )
+              }
+            />
             <Route path="/" element={<Main />} />
+            
 
             <Route
               path="/movies"
@@ -313,33 +334,30 @@ setSavedMovies(JSON.parse(newUsersMovies));
                 </ProtectedRoute>
               }
             />
- 
+
             <Route
-              path="signup" element={
+              path="signup"
+              element={
                 isLoggedIn ? (
                   <Navigate to="/movies" />
                 ) : (
                   <Register onRegister={handleRegister} />
-              )
-              }/>
-
-            <Route path="signin"  element={
+                )
+              }
+            />
+       
+            <Route
+              path="signin"
+              element={
                 isLoggedIn ? (
                   <Navigate to="/movies" />
                 ) : (
-                  <Login onLogin={handleLogin}/>
+                  <Login onLogin={handleLogin} />
                 )
-              }/>
-            <Route path='*'
-              element={
-                <ProtectedRoute isLoggedIn={isLoggedIn}>
-                  <NoMatchPage
-                  />
-                </ProtectedRoute>
               }
-            /> 
+            />
             <Route
-              path="*"
+              path="/"
               element={
                 isLoggedIn ? (
                   <Navigate to="/movies" />
@@ -348,7 +366,7 @@ setSavedMovies(JSON.parse(newUsersMovies));
                 )
               }
             />
-  
+
           </Routes>
           <InfoTooltip
             isOpen={isInfoTooltipOpen}
@@ -360,8 +378,8 @@ setSavedMovies(JSON.parse(newUsersMovies));
             isOpen={isEditProfilePopupOpen}
             onClose={closePopup}
             onUpdateUser={handleUpdateUser}
+            
           />
-        
         </div>
 
         <Footer />

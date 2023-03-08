@@ -28,7 +28,10 @@ function Header({isLoggedIn}) {
 
               
 { isLoggedIn ? ( 
-  <Navigation />
+ <Navigation
+ isOpen={isMenuBurgerOpen}
+ onClick={handleMenuBurger}
+></Navigation>
 ) : (    <div className="header__links">
                  <Link to="/signup" className="header__registraton">
                       Регистрация
