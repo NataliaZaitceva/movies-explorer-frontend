@@ -4,7 +4,7 @@ import { Link, Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import Navigation from "../Navigation/Navigation.jsx";
 import "./Header.css";
 
-function Header(props) {
+function Header({isLoggedIn}) {
   const history = useNavigate();
 
   const [isMenuBurgerOpen, setIsMenuBurgerOpen] = React.useState(false);
@@ -15,7 +15,6 @@ function Header(props) {
 
   function openMain() {
     window.open("/");
-    
   }
 
   return (
@@ -25,18 +24,28 @@ function Header(props) {
         element={
           <>
             <header className="header header-main">
-              <img className="logo" src={logo} alt="Лого" />
+              <img className="logo" src={logo} alt="Лого"/>
 
-              <div className="header__links">
-                <Link to="/signup" className="header__registraton">
-                  Регистрация
-                </Link>
-                <button className="header__button">
-                  <Link to="/signin" className="header__login">
-                    Войти
-                  </Link>
-                </button>
-              </div>
+              
+{ isLoggedIn ? ( 
+ <Navigation
+ isOpen={isMenuBurgerOpen}
+ onClick={handleMenuBurger}
+></Navigation>
+) : (    <div className="header__links">
+                 <Link to="/signup" className="header__registraton">
+                      Регистрация
+                    </Link><button className="header__button">
+                        <Link to="/signin" className="header__login">
+                          Войти
+                        </Link>
+                      </button>
+                            </div>
+)
+}
+
+
+        
             </header>
           </>
         }
